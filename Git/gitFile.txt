@@ -1,1 +1,3 @@
 Make Changes In Files in git master branch
+Adding something new from feature branch 
+to make changes in text files
