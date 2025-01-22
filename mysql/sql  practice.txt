@@ -1,0 +1,55 @@
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+Create index idx_copies On books(AvailableCopies);
+
+Drop index idx_copies on books;
+Create user sanjog_new identified by '123456';
+
+Grant insert,update,delete on library_management.books to 'sanjog_new';
+
+Flush privileges;
+
+REVOKE ALL PRIVILEGES FROM 'user'@'localhost';
+
+-- Drop the user
+DROP USER 'library_user'@'localhost';
+
+----------------------------------------------------------------------------------------
+
+INSERT INTO Users (Username, Name, Email, Password, Phone, Role, created_at, updated_at)
+VALUES ('john_doe', 'John Doe', 'john.doe@example.com', 'hashed_password', '1234567890', 'Customer', UNIX_TIMESTAMP(), UNIX_TIMESTAMP());
+
+INSERT INTO Books (Title, Author, ISBN, Publisher, PublishedYear, TotalCopies, AvailableCopies, Genre)
+VALUES ('The Great Gatsby', 'F. Scott Fitzgerald', '9780743273565', 'Scribner', 1925, 10, 10, 'Classic');
+
+INSERT INTO Librarian (HireDate, UserID)
+VALUES ('2023-05-01', 1); 
+
+INSERT INTO Customer (RegistrationDate, UserID)
+VALUES 
+('2022-02-14', 7),
+('2023-02-14', 5),
+('2025-01-14', 6); 
+
+INSERT INTO Books (Title, Author, ISBN, Publisher, PublishedYear, TotalCopies, AvailableCopies, Genre)
+VALUES
+('1984', 'George Orwell', '9780451524935', 'Plume', 1949, 15, 15, 'Dystopian'),
+('To Kill a Mockingbird', 'Harper Lee', '9780060935467', 'J.B. Lippincott & Co.', 1960, 20, 20, 'Fiction');
+
+UPDATE Books
+SET AvailableCopies = 9
+WHERE BookID = 1;
+
+LOAD DATA INFILE '/F:/_wipro_711/NMS/Assigns/mysql/books.sql'
+INTO TABLE Books
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+(Title, Author, ISBN, Publisher, PublishedYear, TotalCopies, AvailableCopies, Genre)
+
+
+(Great Expectations,Charles Dickens,9780141439563,Penguin Classics,1861,10,10,Classic),
+(War and Peace,Leo Tolstoy,9781400079988,Vintage,1869,12,12,Historical Fiction),
+(Anna Karenina,Leo Tolstoy,9780143035008,Penguin Classics,1877,10,9,Classic),
+(Wuthering Heights,Emily Brontë,9780141439556,Penguin Classics,1847,8,8,Classic);
