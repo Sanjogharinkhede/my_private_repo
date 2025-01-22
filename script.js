@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div class="card_desc">
               <p>${card.desc}</p>
-              <a class="pdf_link" href="${card.href}" target="_blank">View PDF</a>
+              <a class="pdf_link" href="${card.href}" target="_blank">Open Document</a>
             </div>
           </div>
           `;
