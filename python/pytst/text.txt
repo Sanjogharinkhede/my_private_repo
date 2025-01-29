@@ -1,0 +1,262 @@
+#lambda function
+# lamda function is a anonymous function defined using the labda keyword
+# it can contain large number of arguments
+# expression is evaluated and returned when function is called
+# use case
+# short operation for defining function
+# syntax for lambda function
+# lamda arguments : expression
+#arguments are input parameters
+#expression are things that are evaluated
+# example for a lambda function
+add = lambda a , b : a + b
+print(add(1,2))
+multiply = lambda a , b : a * b
+print (multiply(3,4))
+# square
+# checking if number is even / odd
+
+square = lambda n : n*n
+print(square(4))
+is_even = lambda x: "Even" if x % 2 == 0 else "Odd"
+number = 3
+print(is_even(number))
+
+# using lambda functions with map(),filter( ) and reduce()
+
+numbers =[1,2,3,4,5]
+def sq(x) :
+    return x**2;
+squares = list(map(sq , numbers ))
+print(squares )
+# QUESTION
+["hello","world"]
+
+["HELLO","WORLD"]
+
+
+
+s = "hello","world"
+newS = list(map(lambda char : char.upper(), s))
+print(newS)
+
+num = [1,2,3,4]
+add = list(map(lambda a : a+10, num))
+print(add)
+
+
+# FILTER
+numbers = [1,2,3,4,5]
+even_numbers  = list(filter(lambda x : x>3 , numbers ))
+print (even_numbers )
+
+# question - 1 filter values greater than 3
+# question - 2 filter odd values
+
+# covered map , filter
+# moving to reduce
+
+# factorial
+# point to note
+from functools import reduce
+
+numbers = [ 1,2,3,4,5 ]
+#takes 2 args function and a iterable
+factorial = reduce(lambda x , y : x * y , numbers  )
+print (factorial)
+
+# question 2
+#finding the maximum value
+# question 3
+#concatenating strings
+#["a","b"] -> "a b"
+
+
+numbers =[1,2,3,4,5]
+sum = reduce(lambda x , y: x+y , numbers)
+print(sum)
+numbers =[1,2,3,45,5]
+maxi = reduce(lambda x , y: max(x,y) , numbers)
+print(maxi)
+str1 =["akjhkj","bjhjhgjgh"]
+concat_str = reduce(lambda x , y: x+ ' ' + y , str1)
+print(concat_str)
+
+
+
+
+
+
+
+
+
+
+
+
+
+***
+# type of assertions in pytest
+1.equality assertion
+
+def test_equality( ) :
+    assert 5 * 2 == 10
+2.inequality assertion
+
+def test_equality( ) :
+    assert 5 * 2 != 10
+
+3.membership assertion
+checking if a value is present in a collection
+def test_membership():
+    assert 3 in [1,2,3,4]
+
+4. boolean assertion
+checks if a condition is true or false
+
+def test_boolean():
+    assert not False
+5.greater /lessor comparisons
+def test_comparison ():
+    assert 10>1
+***
+
+
+
+
+1. be very specific while writing the testcases
+2. avoid overusing assert
+3. write custom messages for clarity
+
+
+How Pytest Discovers Tests
+
+Pytest uses a discovery process to find and execute tests automatically. It relies on naming conventions and file structures to identify which files, classes, and functions should be treated as tests. Here’s a detailed explanation:
+
+1. Pytest Test Discovery Rules
+
+Pytest discovers tests using the following rules:
+
+a. Test File Names
+• The file name must start with test_ or end with _test.
+• Examples:
+• test_example.py (discovered)
+• example_test.py (discovered)
+• example.py (not discovered)
+
+b. Test Function Names
+• Functions in test files must start with test_.
+• Example:
+
+def test_addition():  # Discovered
+    assert 1 + 1 == 2
+
+def addition_test():  # Not discovered
+    assert 1 + 1 == 2
+
+
+c. Test Classes
+• Classes in test files must:
+• Start with Test.
+• Contain test methods (functions starting with test_).
+• Not have an init method.
+• Example:
+
+class TestMathOperations:  # Discovered
+    def test_addition(self):
+        assert 2 + 2 == 4
+
+class MathOperations:  # Not discovered
+    def test_addition(self):
+        assert 2 + 2 == 4
+
+2. Directory Structure for Discovery
+
+Pytest recursively looks for test files in the current working directory and its subdirectories. A common structure might look like this:
+
+project/
+├── app/
+│   └── app.py
+├── tests/
+│   ├── test_app.py
+│   ├── test_utils.py
+│   └── helpers/
+│       └── test_helpers.py
+
+When you run pytest in the project/ directory, it will discover and run all test files in the tests/ directory (and its subdirectories).
+
+3. Running Test Discovery
+
+To discover tests without running them, use the --collect-only option:
+
+pytest --collect-only
+
+Example output:
+
+<Module test_app.py>
+<Function test_functionality>
+<Module test_utils.py>
+<Function test_utility_function>
+
+This output shows the test files and functions Pytest has discovered.
+
+4. Filtering Test Discovery
+
+You can control which tests Pytest runs using specific options:
+
+a. Run Tests in a Specific File
+
+pytest test_app.py
+
+b. Run a Specific Test Function
+
+pytest test_app.py::test_functionality
+
+c. Run Tests by Keyword
+
+You can filter tests by a keyword in their name using -k:
+
+pytest -k "addition"
+
+d. Exclude Files/Directories
+
+Use the --ignore option to exclude specific files or directories:
+
+pytest --ignore=tests/old_tests/
+
+5. Customizing Test Discovery
+
+You can customize Pytest’s discovery behavior using a pytest.ini file or pyproject.toml.
+
+Example pytest.ini file:
+
+[pytest]
+python_files = test_*.py *_spec.py
+python_classes = Test*
+python_functions = test_* check_*
+
+In this configuration:
+• Files starting with test_ or ending with _spec.py are discovered.
+• Classes starting with Test are discovered.
+• Functions starting with test_ or check_ are discovered.
+
+6. Handling Discovery Issues
+
+If Pytest doesn’t discover certain tests, check the following:
+• Ensure file, function, and class names follow the naming conventions.
+• Ensure the test files are in the current directory or its subdirectories.
+• Check if the test is skipped using markers like @pytest.mark.skip.
+• Use pytest --collect-only to debug discovery issues.
+
+7. Ignoring Specific Files or Directories
+
+To permanently exclude certain files or directories from discovery, you can add them to a .gitignore or .pytest_cache.
+
+Alternatively, use the --ignore option:
+
+pytest --ignore=test_legacy.py
+
+8. Summary of Pytest Discovery Process
+• Pytest starts in the current working directory.
+• Recursively looks for files matching the naming convention (test_*.py or *_test.py).
+• Identifies test functions, methods, and classes based on naming conventions.
+• Collects all valid tests and prepares them for execution.

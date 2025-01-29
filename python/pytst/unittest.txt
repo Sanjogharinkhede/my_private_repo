@@ -1,0 +1,86 @@
+ns for a robot to do tasks,
+like making a sandwich or solving math problems.
+  Now you want to make sure the robot follows your instructions correctly every time.
+  This is where unit tests come in—they’re like small tests to check that each instruction works perfectly.
+
+1. What Are Unit Tests?
+
+Unit tests are small checks or questions we create to make sure each part of the program
+(or robot instruction) is working as expected.
+
+Real-Life Analogy: Testing a Sandwich Recipe
+
+Imagine you wrote a recipe for a sandwich. To make sure the recipe is correct, you might test each step, like:
+1. Does the bread go on the plate?
+2. Is the peanut butter spread evenly?
+3. Is the sandwich folded properly?
+
+If each step works, you know the whole recipe is correct!
+
+In programming, unit tests check that the small pieces of code (functions or methods) behave the way we expect.
+
+2. Writing Unit Tests for Your Code
+
+Let’s say you have a function in Python that adds two numbers. Here’s what the function looks like:
+
+def add_numbers(a, b):
+    return a + b
+
+To test this function, we write a unit test to check if it adds numbers correctly.
+
+Example Unit Test
+
+Here’s a test using pytest:
+
+def test_add_numbers():
+    result = add_numbers(2, 3)  # Call the function with 2 and 3
+    assert result == 5          # Check if the result is 5
+
+• What’s Happening Here?
+• We call the function add_numbers(2, 3) and save the result.
+• We use assert to make sure the result is 5. If it’s not, the test will fail.
+
+A Fun Example: Testing a Robot
+
+Here’s a function that tells a robot to greet someone:
+
+def greet(name):
+    return f"Hello, {name}!"
+
+The unit test for this might look like:
+
+def test_greet():
+    result = greet("Alice")  # Call the function with "Alice"
+    assert result == "Hello, Alice!"  # Check if the result is correct
+
+If the robot says “Hello, Alice!”, the test passes. If it says something else, the test fails.
+
+3. Running Unit Tests Using pytest
+
+Now that we’ve written the tests, let’s run them using pytest.
+
+How to Run Tests
+1. Save the code and the test in a file (e.g., test_robot.py).
+2. Open your terminal or command prompt.
+3. Run the command:
+
+pytest
+
+
+4. pytest will find all the tests and run them for you. It will show:
+• Passed tests: The code worked correctly.
+• Failed tests: The code didn’t behave as expected.
+
+Example Output
+
+When you run pytest, you might see something like this:
+
+===================== test session starts =====================
+collected 2 items
+
+test_robot.py ..                                        [100%]
+
+====================== 2 passed in 0.02s ======================
+
+Here:
+• .. means both tests passed.

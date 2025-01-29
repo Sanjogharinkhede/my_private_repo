@@ -1,0 +1,29 @@
+{
+    "name": "sachin",
+    "age": 88,
+    "email": "alice@example.com",
+    "is_active": true,
+    "address": {
+        "street": "123 Wonderland Ave",
+        "city": "Wonderland",
+        "postal_code": "12345"
+    },
+    "friends": [
+        {
+            "name": "Bob",
+            "age": 28
+        },
+        {
+            "name": "Charlie",
+            "age": 35
+        },
+        {
+            "name": "David",
+            "age": 27
+        },
+        {
+            "name": "King",
+            "age": 99
+        }
+    ]
+}

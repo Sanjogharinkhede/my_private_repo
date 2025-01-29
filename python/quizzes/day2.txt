@@ -1,0 +1,212 @@
+1. What is the purpose of defining a fixture in conftest.py?
+a) To write test cases
+b) To make reusable setups available to multiple test files
+c) To store test results
+d) To import other Python modules
+A
+==============================================
+
+2. Fixtures
+True or False: Fixtures defined in conftest.py need to be imported manually in test files.
+a) True
+b) False
+c) --
+d) --
+B
+==============================================
+
+3. Parameterizing Tests
+Which pytest decorator is used to run a test with multiple sets of input values?
+a) @pytest.fixture
+b) @pytest.mark.parametrize
+c) @pytest.mark.many_tests
+d) @pytest.mark.iterate
+B
+==============================================
+
+4. Parameterizing Tests
+Fill in the blanks:
+In the syntax @pytest.mark.parametrize("a, b", [(1, 2), (3, 4)]), the values (1, 2) and (3, 4) represent __.
+a) Variable names
+b) Input data sets
+c) Test cases
+d) Error messages
+B
+==============================================
+
+5. Assert Statements
+What happens when an assert statement fails?
+a) The program continues running
+b) The program stops and raises an AssertionError
+c) The program raises a ValueError
+d) The program ignores the
+B
+==============================================
+
+6. Assert Statements
+True or False: An assert statement can include an optional error message.
+a) True
+b) False
+c) 
+d) 
+A
+==============================================
+
+7. Testing Exceptions
+Which pytest context manager is used to test if a specific exception is raised?
+a) pytest.test
+b) pytest.raises
+c) pytest.exception
+d) pytest.error
+B
+==============================================
+
+8. Testing Exceptions
+In the following code, what is the purpose of the match argument?
+
+with pytest.raises(ValueError, match="Invalid input"):
+    my_function("bad_input")
+a) To raise the exception
+b) To check if the exception contains the specific message “Invalid input”
+c) To import the function being tested
+d) To handle the exception
+B
+==============================================
+
+9. General
+What is the benefit of parameterized tests?
+a) To speed up the execution of tests
+b) To test multiple input combinations with one test function
+c) To automatically write test cases
+d) To handle errors gracefully
+B
+==============================================
+
+10. General
+True or False: pytest.raises will fail the test if the specified exception is not raised.
+a) True
+b) False
+c) --
+d) --
+A
+==============================================
+
+11. What is pytest used for?
+a) Designing websites
+b) Running and writing tests for Python code
+c) Debugging Java programs
+d) Compiling Python code
+B
+==============================================
+
+12. What is the default command to run all tests using pytest?
+a) run_tests
+b) pytest
+c) python test.py
+d) run pytest
+B
+==============================================
+
+13. What is the naming convention for test files in pytest?
+a) Files must start with test_
+b) Files must end with _test
+c) Files must start and end with test_
+d) No specific naming is required
+A
+==============================================
+
+14. How do you mark a test to be skipped in pytest?
+a) @pytest.mark.skip(reason="reason_here")
+b) @pytest.mark.ignore
+c) @pytest.skip
+d) @pytest.exclude
+A
+==============================================
+
+15. What does the assert keyword do in pytest?
+a) Stops the test from running
+b) Checks if a condition is true
+c) Marks a test as skipped
+d) Logs the result of a test
+B
+==============================================
+
+16. How can you run tests in verbose mode using pytest?
+a) pytest -d
+b) pytest -verbose
+c) pytest -v
+d) pytest --run
+C
+==============================================
+
+17. What is the purpose of pytest fixtures?
+a) To skip tests
+b) To provide reusable setup and teardown code
+c) To run tests in parallel
+d) To generate test reports
+B
+==============================================
+
+18. Which pytest marker is used for tests expected to fail?
+a) @pytest.mark.skip
+b) @pytest.mark.fail
+c) @pytest.mark.xfail
+d) @pytest.mark.error
+C
+==============================================
+
+19. How do you dynamically skip a test during execution?
+a) pytest_abort()
+b) pytest.skip("reason")
+c) @pytest.mark.skip
+d) pytest.fail()
+B
+==============================================
+
+20. What is the purpose of pytest.ini or pyproject.toml?
+a) To store test results
+b) To define configurations for pytest
+c) To run pytest from a GUI
+d) To install pytest plugins
+B
+==============================================
+
+21. How do you install pytest in your Python environment?
+a) pip install pytest
+b) install pytest
+c) pytest install
+d) python pytest
+A
+==============================================
+
+22. Which command is used to run a specific test file in pytest?
+a) pytest file.py
+b) pytest run file.py
+c) pytest --file file.py
+d) run file.py
+A
+==============================================
+
+23. What is the use of the -k option in pytest?
+a) To mark tests to be skipped
+b) To run tests matching a specific substring
+c) To disable all tests in a file
+d) To sort test results
+B
+==============================================
+
+24. How do you run tests in parallel using pytest?
+a) Use the --parallel flag
+b) Use the pytest-parallel plugin
+c) Use the pytest-xdist plugin with the -n option
+d) pytest doesn’t support parallel execution
+C
+==============================================
+
+25. What does the -q option do when running pytest?
+a) Runs tests in parallel
+b) Displays a quiet output with less detail
+c) Runs tests with extra logging
+d) Skips all tests
+B
+==============================================

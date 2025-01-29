@@ -1,0 +1,227 @@
+
+"""
+
+Advanced HTTP Features in Python Requests
+ 
+Python’s requests module is a powerful tool for making HTTP requests.
+In addition to basic functionality, it allows you to manage HTTP headers, 
+handle content negotiation, and implement various authentication methods.
+  Here’s a detailed, easy-to-understand explanation of these advanced HTTP features:
+ 
+1. Managing HTTP Headers
+ 
+HTTP headers are key-value pairs sent with HTTP requests and responses.
+They convey metadata about the request or the response
+such as content type, authorization credentials, and more.
+ 
+Setting HTTP Headers in Requests
+ 
+You can set headers in your requests by passing a dictionary to the headers parameter.
+ 
+Example: Setting Custom Headers
+ 
+import requests
+ 
+url = "https://example.com/api"
+headers = {
+    "User-Agent": "MyApp/1.0",
+    "Authorization": "Bearer my_api_token",
+    "Accept": "application/json"
+}
+ 
+response = requests.get(url, headers=headers)
+print(response.status_code)
+print(response.text)
+ 
+• User-Agent: This header identifies your app to the server.
+• Authorization: Typically used for sending authentication tokens.
+• Accept: Tells the server which content type the client is willing to receive (e.g., application/json).
+ 
+2. Custom Headers
+ 
+Custom headers are often used to send specific information or control the server’s behavior. These headers can be added by specifying them in the headers dictionary.
+ 
+Example: Sending Custom Headers
+ 
+url = "https://example.com/api"
+custom_headers = {
+    "X-Custom-Header": "CustomValue",
+    "X-Request-ID": "12345"
+}
+ 
+response = requests.get(url, headers=custom_headers)
+print(response.status_code)
+ 
+In the example, X-Custom-Header and X-Request-ID are custom headers that you can define. This helps in tracking or passing additional context for the request.
+ 
+3. Content Negotiation
+ 
+Content negotiation allows a client to tell the server 
+what type of content it can accept (e.g., JSON, XML, HTML) and the server responds accordingly.
+ 
+Example: Content Negotiation
+ 
+Content negotiation is mainly done using the Accept header,
+but it can also be done using Accept-Language, Accept-Encoding, and others.
+  Here’s how to tell the server you want JSON in response:
+ 
+url = "https://example.com/api"
+headers = {
+    "Accept": "application/json"
+}
+ 
+response = requests.get(url, headers=headers)
+print(response.status_code)
+print(response.json())  # Assuming the response is in JSON format
+ 
+• Accept: This header specifies the media type(s) the client is willing to accept from the server.
+• Example: application/json (accept JSON), text/html (accept HTML)
+ 
+4. Authentication Methods
+ 
+Authentication is essential to verify the identity of a client or server.
+The requests module supports various authentication methods, including Basic Authentication
+  and Bearer Tokens.
+ 
+5. Basic Authentication
+ 
+Basic Authentication is a simple authentication 
+method where the server expects the client to send a username and password 
+in the HTTP headers. The requests module provides built-in support for this using 
+the HTTPBasicAuth class.
+ 
+Example: Using Basic Authentication
+ 
+from requests.auth import HTTPBasicAuth
+import requests
+ 
+url = "https://example.com/api"
+response = requests.get(url, auth=HTTPBasicAuth('username', 'password'))
+print(response.status_code)
+print(response.text)
+ 
+• HTTPBasicAuth(‘username’, ‘password’): This automatically encodes the username 
+and password in the format username:password and sends it in the Authorization header.
+ 
+6. Bearer Authentication (Token-Based)
+ 
+Bearer authentication is a more secure method where a token 
+(usually a JWT or OAuth token) is used instead of a username and password.
+ 
+Example: Using Bearer Authentication
+ 
+import requests
+ 
+url = "https://example.com/api"
+headers = {
+    "Authorization": "Bearer your_access_token"
+}
+ 
+response = requests.get(url, headers=headers)
+print(response.status_code)
+print(response.json())
+ 
+• Authorization header: The token is included after the word Bearer (e.g., Bearer your_access_token).
+• This is commonly used in APIs where OAuth or JWT tokens are issued.
+
+"""
+
+
+
+API Integration Techniques
+ 
+Here are the most common techniques and methods used for integrating and interacting with RESTful APIs in Python using the requests library:
+ 
+1. Sending a GET Request
+ 
+The most common type of request is a GET request, which is used to fetch data from the server. You can use requests.get() to send a GET request.
+ 
+Example: Sending a GET Request to Fetch Data
+ 
+import requests
+ 
+# Define the API endpoint
+url = "https://jsonplaceholder.typicode.com/posts"
+ 
+# Send GET request
+response = requests.get(url)
+ 
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    print("Response Data:", response.json())  # Parse the JSON response
+else:
+    print("Failed to retrieve data:", response.status_code)
+ 
+Explanation:
+• requests.get(url) sends a GET request to the provided URL.
+• response.json() parses the JSON data returned by the API.
+• response.status_code checks the HTTP status code to ensure the request was successful.
+ 
+2. Sending a POST Request
+ 
+A POST request is used to send data to the server, typically to create a new resource. You send data (payload) in the body of the request.
+ 
+Example: Sending a POST Request to Create Data
+ 
+import requests
+ 
+# Define the API endpoint
+url = "https://jsonplaceholder.typicode.com/posts"
+ 
+# Data to send in the body of the POST request
+data = {
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+}
+ 
+# Send POST request with data
+response = requests.post(url, json=data)
+ 
+# Check if the request was successful
+if response.status_code == 201:
+    print("Created Data:", response.json())  # Return the created data (from response)
+else:
+    print("Failed to create data:", response.status_code)
+ 
+Explanation:
+• requests.post(url, json=data) sends a POST request with JSON data.
+• response.status_code == 201 checks if the data was created (HTTP status code 201 is for successful creation).
+• The json=data argument automatically converts the dictionary into JSON format.
+ 
+3. Sending a PUT Request
+ 
+A PUT request is used to update an existing resource on the server.
+You send the updated data in the body of the request.
+ 
+Example: Sending a PUT Request to Update Data
+ 
+import requests
+ 
+# Define the API endpoint
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+# Data to update
+data = {
+    "id": 1,
+    "title": "Updated Title",
+    "body": "Updated Content",
+    "userId": 1
+}
+ 
+# Send PUT request to update the post
+response = requests.put(url, json=data)
+ 
+# Check if the update was successful
+if response.status_code == 200:
+    print("Updated Data:", response.json())  # Return the updated data
+else:
+    print("Failed to update data:", response.status_code)
+ 
+Explanation:
+• requests.put(url, json=data) sends a PUT request to update the resource identified by the URL.
+• The json=data argument sends the new data as JSON.
+ 
+4. Sending a DELETE Request
+ 
+A DELETE request is used to remove a resource from the server

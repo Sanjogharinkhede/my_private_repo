@@ -1,0 +1,81 @@
+ans:A
+ans:B
+ans:A
+ans:B
+ans:A
+ans:A
+ans:D
+ans:B
+ans:A
+ans:A
+-------------------------------------------
+
+1 ans:B
+2 ans:B
+3 ans:A
+4 ans:C
+5 ans:B
+6 ans:A
+7 ans:B
+8 ans:B
+9 ans:A
+10 ans:B
+-------------------------------------------
+
+B
+False
+B
+B
+B
+True
+B
+B
+B
+True
+-------------------------------------------
+1 B
+2 B
+3 A
+4 A
+5 B
+6 C
+7 A*
+8 C
+9 B
+10 B
+11 A
+12 A
+13 B
+14 C
+15 B
+-------------------------------------------
+
+
+
+
+
+
+
+
+pytest -k "comparision"
+pytest --collect-only
+pytest test_sample.py::test_membership
+pytest subdir/test_two.py::test_comparision
+pytest
+ls
+mv test_two.py  subdir/test_two.py
+mkdir subdir
+nvim test_two.py
+pytest test_two.py
+cd pytest_codes/
+cd NMS/notes/python_day13/
+pytest sample.py
+cp test_sample.py  sample.py
+pytest test_sample.py
+pytest --collect-only
+
+
+
+
+
+

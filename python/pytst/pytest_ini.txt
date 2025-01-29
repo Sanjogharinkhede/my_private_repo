@@ -1,0 +1,89 @@
+Think of pytest.ini as a rulebook that tells pytest how to behave.
+Instead of giving instructions every time you run tests, you can write them in this rulebook,
+and pytest will follow them automatically.
+
+1. What is pytest.ini?
+
+pytest.ini is a file where you can set up rules and settings for pytest.
+It tells pytest things like:
+• How to display test results.
+• Which tests to run or skip.
+• What extra information to show when tests run.
+
+It makes your life easier because you don’t have to type the same commands every time you test.
+
+2. How to Create a pytest.ini File
+1. Open your project folder (where your test files are).
+2. Create a new file and name it pytest.ini.
+3. Inside this file, write the rules you want pytest to follow.
+
+3. What Can You Do with pytest.ini?
+
+Here are some cool things you can set in pytest.ini:
+
+a) Add Default Options
+
+You can tell pytest to always run in a specific way, like showing more details about tests.
+
+Example:
+
+[pytest]
+addopts = -v
+
+• What it does: pytest will always run in verbose mode, showing detailed results of each test.
+
+b) Add Markers
+
+Markers are like labels for your tests. You can use them to organize your tests or run specific ones.
+
+Example:
+
+[pytest]
+markers =
+    slow: marks tests as slow
+    fast: marks tests as fast
+
+• What it does: Allows you to tag your tests as slow or fast.
+
+c) Ignore Specific Files or Folders
+
+You can tell pytest to skip certain files or folders that don’t contain tests.
+
+Example:
+
+[pytest]
+norecursedirs = old_tests logs
+
+• What it does: pytest will ignore the old_tests and logs folders while running tests.
+
+d) Change Test File Names
+
+By default, pytest looks for files that start with test_. You can change this rule.
+
+Example:
+
+[pytest]
+python_files = check_*.py
+
+• What it does: pytest will now look for files that start with check_ instead of test_.
+
+e) Change Test Function Names
+
+By default, pytest looks for test functions that start with test_. You can change this rule.
+
+Example:
+
+[pytest]
+python_functions = check_*
+
+• What it does: pytest will now look for functions that start with check_.
+
+
+
+
+
+
+----------------------------------------------------------------------------
+pytest --ignore=tests/test_invalid.py
+
+addopts = --ignore=test_ignore_me.py

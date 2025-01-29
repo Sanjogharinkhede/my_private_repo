@@ -1,0 +1,278 @@
+1. What does HTTP stand for?
+a) HyperText Transfer Protocol
+b) Hyperlink Transfer Process
+c) High-Level Transfer Protocol
+d) HyperText Translation Protocol
+
+A
+==============================================
+
+2. What is the primary purpose of the HTTP protocol?
+a) To connect hardware devices
+b) To enable communication between web browsers and servers
+c) To secure network connections
+d) To transfer files between computers
+
+B
+==============================================
+
+3. What are the two main parts of an HTTP transaction?
+a) Headers and Cookies
+b) Request and Response
+c) Client and Server
+d) URL and IP Address
+
+B
+==============================================
+
+
+4. Which of the following is NOT an HTTP method?
+a) GET
+b) POST
+c) SAVE
+d) DELETE
+
+C
+==============================================
+
+
+5. What does the HTTP GET method do?
+a) Submits data to the server
+b) Retrieves data from the server
+c) Deletes a resource on the server
+d) Updates part of a resource
+
+B
+==============================================
+
+
+6. Which HTTP method is used to send new data to a server?
+a) GET
+b) POST
+c) DELETE
+d) PATCH
+
+B
+==============================================
+
+7. Which HTTP method is used to update an existing resource?
+a) GET
+b) POST
+c) PUT
+d) CONNECT
+
+C
+==============================================
+
+8. What is the main difference between the HTTP PUT and PATCH methods?
+a) PUT replaces the whole resource; PATCH updates part of it
+b) PUT deletes the resource; PATCH replaces it
+c) PUT is secure, PATCH is not
+d) PUT is used for reading data; PATCH is used for writing data
+
+A
+==============================================
+
+9. What does the HTTP DELETE method do?
+a) Retrieves data
+b) Deletes a resource on the server
+c) Updates a resource
+d) Submits a form
+
+B
+==============================================
+
+
+10. What is an HTTP status code?
+a) A code that identifies the request method
+b) A message that provides feedback about a request
+c) The server’s IP address
+d) A code that secures the connection
+
+B
+==============================================
+
+
+11. What does the HTTP status code 200 mean?
+a) Page not found
+b) Internal server error
+c) OK, the request was successful
+d) Unauthorized access
+
+C
+==============================================
+
+
+12. What does the HTTP status code 404 indicate?
+a) OK, the request was successful
+b) Resource not found
+c) Server is overloaded
+d) Bad request
+
+B
+==============================================
+
+13. What is a RESTful service?
+a) A way for computers to communicate using rules
+b) A web service following REST principles
+c) A type of database
+d) A security protocol
+
+B
+==============================================
+
+
+14. What does REST stand for?
+a) Representational State Transfer
+b) Reliable State Transfer
+c) Resource State Transmission
+d) Representational Secure Transfer
+
+A
+==============================================
+
+15. Which of the following is a principle of RESTful services?
+a) Stateful communication
+b) Stateless communication
+c) Encrypted-only communication
+d) Sequential transactions
+
+B
+==============================================
+
+16. What is the key difference between REST and SOAP?
+a) REST is more lightweight and uses HTTP; SOAP uses XML
+b) REST is slower; SOAP is faster
+c) REST requires encryption; SOAP does not
+d) REST uses only POST, while SOAP uses all HTTP methods
+
+A
+==============================================
+
+17. Which HTTP method would you use to delete a user from a database?
+a) GET
+b) PUT
+c) DELETE
+d) PATCH
+
+C
+==============================================
+
+
+18. What does a RESTful API resource represent?
+a) A file on the server
+b) A unique URL for accessing data
+c) A secure connection method
+d) A server error message
+
+A
+==============================================
+
+
+19. What is the benefit of statelessness in REST?
+a) It speeds up secure connections
+b) Each request contains all the information needed to process it
+c) It requires less storage for data
+d) It ensures data is always encrypted
+
+B
+==============================================
+
+20. What is a common RESTful practice when designing APIs?
+a) Use long and detailed URLs
+b) Use unique URLs to represent resources
+c) Avoid using HTTP status codes
+d) Keep all data on the client side
+
+B
+==============================================
+
+1. What is the primary purpose of the http.client module in Python?
+a) To parse JSON data
+b) To establish HTTP/HTTPS connections and make requests
+c) To handle database connections
+d) To perform file I/O operations
+
+B
+==============================================
+
+2. Which method is used to send a GET request using http.client?
+a) get()
+b) request("GET", ...)
+c) send_request("GET", ...)
+d) fetch("GET", ...)
+
+B
+==============================================
+
+3. How do you decode the response data obtained using http.client?
+a) response.decode()
+b) response.read().decode("utf-8")
+c) response.read("utf-8")
+d) response.text.decode("utf-8")
+
+B
+==============================================
+
+4. Which Python module is used to parse JSON data from an HTTP response?
+a) json
+b) urllib
+c) requests
+d) http.client
+
+A
+==============================================
+
+5. What is the default HTTP status code that indicates success for a GET request?
+a) 404
+b) 500
+c) 200
+d) 201
+
+C
+==============================================
+
+6. What does the sorted(posts, key=lambda post: post['id'], reverse=True) expression do?
+a) Filters posts with the highest ID.
+b) Sorts posts by id in ascending order.
+c) Sorts posts by id in descending order.
+d) Groups posts by id.
+
+C
+==============================================
+
+7. How would you send a POST request with JSON data using http.client?
+a) conn.request("POST", "/endpoint", headers=headers)
+b) conn.request("POST", "/endpoint", body=json.dumps(data), headers=headers)
+c) conn.post("/endpoint", data)
+d) conn.request("GET", "/endpoint", body=data)
+
+B
+==============================================
+
+8. What happens if you try to parse invalid JSON with json.loads()?
+a) It returns None.
+b) It raises a ValueError.
+c) It raises a JSONDecodeError.
+d) It silently passes without error.
+
+C
+=============================================
+
+9. What is the purpose of the response.status attribute in http.client?
+a) To retrieve the body of the HTTP response.
+b) To indicate the HTTP method used in the request.
+c) To display the HTTP status code of the response.
+d) To display the headers of the response.
+
+C
+==============================================
+
+10. Which of the following is the correct way to close an http.client connection?
+a) conn.terminate()
+b) conn.shutdown()
+c) conn.close()
+d) conn.disconnect()
+
+C
+==============================================

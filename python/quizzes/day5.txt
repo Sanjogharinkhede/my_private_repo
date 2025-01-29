@@ -1,0 +1,90 @@
+Questions:
+1. What is the correct way to convert a JSON string into a Python dictionary?
+A) json.to_dict(json_string)
+B) json.load(json_string)
+C) json.loads(json_string)
+D) json.parse(json_string)
+
+C
+==============================================
+
+2. Which Python module is used for handling JSON?
+A) pickle
+B) csv
+C) json
+D) xml
+
+C
+==============================================
+
+3. What function is used to write a Python dictionary to a JSON file?
+A) json.dump()
+B) json.write()
+C) json.store()
+D) json.dumps()
+
+A
+==============================================
+
+4. What function is used to convert a Python dictionary into a JSON string?
+A) json.dump()
+B) json.write()
+C) json.dumps()
+D) json.store()
+
+C
+==============================================
+
+5. What function is used to read a JSON file into a Python dictionary?
+A) json.load(file)
+B) json.loads(file)
+C) json.parse(file)
+D) json.read(file)
+
+A
+==============================================
+
+6. Which method is best for handling extremely large JSON files efficiently?
+A) json.load()
+B) json.loads()
+C) ijson.items()
+D) json.parse()
+
+C
+==============================================
+
+7. What type of Python object does json.loads('{"name": "Alice", "age": 25}') return?
+A) List
+B) String
+C) Dictionary
+D) Tuple
+
+C
+==============================================
+
+8. What is the output of json.dumps({"name": "Alice", "age": 25})?
+A) {"name": "Alice", "age": 25}
+B) {"name": "Alice", "age": "25"}
+C) ["name": "Alice", "age": 25]
+D) ["name": "Alice", "age": "25"]
+
+A
+==============================================
+
+9. Which function is used to merge multiple JSON files?
+A) json.merge()
+B) json.combine()
+C) json.load()
+D) None of the above
+
+D
+==============================================
+
+10. What is the primary advantage of using ijson for large JSON files?
+A) It reads the whole file at once
+B) It streams data one object at a time
+C) It writes JSON to files
+D) It converts objects into strings
+
+B
+==============================================

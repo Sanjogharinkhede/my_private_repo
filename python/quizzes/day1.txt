@@ -1,0 +1,106 @@
+1. Which of the following is a correct example of a list comprehension?
+a) list = [x for x in range(10)]
+b) list = x in range(10)
+c) list = for x in range(10): x
+d) list = map(range(10))
+
+A
+==============================================
+
+2. What does an iterator in Python do?
+a) Stores all elements in memory at once
+b) Allows iterating through elements one at a time
+c) Automatically generates infinite values
+d) Executes functions in parallel
+
+B
+==============================================
+
+3. Which keyword is used to create a generator in Python?
+a) yield
+b) return
+c) break
+d) continue
+
+A
+==============================================
+
+4. What is the purpose of a Python decorator?
+a) To create loops
+b) To modify or extend the behavior of a function
+c) To filter elements from a list
+d) To handle exceptions
+
+B
+==============================================
+
+5. Which of the following is an example of a lambda function in Python?
+a) lambda x: x * 2
+b) def multiply(x): return x * 2
+c) map(x: x * 2)
+d) for x in range(5): x * 2
+
+A
+==============================================
+
+6. In the following code, what will next(gen) do?
+
+def gen():
+    yield 1
+    yield 2
+gen = gen()
+
+a) Return 1
+b) Return 2
+c) Raise a StopIteration error
+d) Return a list of [1, 2]
+
+A
+==============================================
+
+7. Which of the following functions is not suitable for lambda functions?
+a) map()
+b) filter()
+c) reduce()
+d) def()
+
+D
+==============================================
+
+8. How do you apply a decorator to a Python function?
+a) By calling the decorator inside the function
+b) By prefixing the function with the @decorator_name
+c) By passing the decorator as an argument to the function
+d) By using the yield keyword
+
+B
+==============================================
+
+9. What will the following code output?
+
+list1 = [1, 2, 3, 4]
+squared = [x**2 for x in list1]
+print(squared)
+
+a) [1, 4, 9, 16]
+b) [1, 2, 3, 4]
+c) [1, 8, 27, 64]
+d) [1, 4, 9]
+
+A
+==============================================
+
+10. What is the result of this code?
+
+from functools import reduce
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers)
+print(result)
+
+a) 10
+b) 24
+c) [1, 2, 3, 4]
+d) TypeError
+
+A
+==============================================

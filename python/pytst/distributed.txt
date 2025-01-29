@@ -1,0 +1,112 @@
+n distributed and parallel tests.
+Think of it like a group of students working together to solve a big pile of homework faster!
+
+What is Parallel Testing?
+
+Imagine you have 100 math problems to solve.
+If one student solves them all by themselves, it will take a long time.
+But if you divide the problems among 5 students,
+each student can solve 20 problems at the same time. This makes the work finish faster.
+
+In testing, parallel testing means running multiple tests at the same time on different
+“students” (computers or CPU cores).
+
+What is Distributed Testing?
+
+Now, imagine the 100 math problems are so many that even
+5 students can’t do it quickly. You bring in students from other classrooms to help.
+Each classroom takes a part of the homework.
+
+In testing, distributed testing means running tests across multiple computers or
+environments. It’s like dividing the work among different classrooms.
+
+Why Do We Use Parallel and Distributed Testing?
+1. Save Time: Running tests one by one takes a long time.
+Running them together finishes faster.
+2. Handle Big Tasks: If there are too many tests, splitting them makes the job easier.
+3. Use More Resources: We can use the power of multiple computers or CPU cores.
+
+How Does It Work in Real Life?
+
+To run tests in parallel or distribute them,
+we use a tool called pytest-xdist.
+  It’s like a teacher who divides the problems among students.
+
+Running Parallel Tests
+
+Parallel testing means splitting the work across multiple CPU cores on the same computer.
+
+Step 1: Install pytest-xdist
+
+First, we install the helper tool. Think of it like giving each student a pencil to work with:
+
+pip install pytest-xdist
+
+Step 2: Run Tests in Parallel
+
+To tell pytest to run the tests in parallel,
+use the -n option. The number after -n is how many “students” will work at the same time.
+
+pytest -n 4
+
+• If you have 100 tests and set -n 4, pytest will divide the tests among 4 workers,
+  and each will handle 25 tests.
+
+Running Distributed Tests
+
+Distributed testing means dividing the tests across multiple computers.
+
+Step 1: Set Up Multiple Computers
+
+Imagine each “classroom” is a different computer. You need to:
+1. Install pytest-xdist on each computer.
+2. Make sure all computers can communicate with each other.
+
+Step 2: Use a Distributed Runner
+
+You can use tools like Docker or cloud services
+to manage distributed testing. These tools are like school administrators
+assigning classrooms to handle different parts of the work.
+
+An Example Parallel Testing Story
+
+Let’s say we have a group of kids solving puzzles:
+1. The Pile of Puzzles: You have 100 puzzles to solve.
+2. One Kid Solving Alone: If one kid solves them alone, it takes 100 minutes (1 minute per puzzle).
+3. Four Kids Solving Together: If you give the puzzles to 4 kids, each solves 25 puzzles. The whole job finishes in 25 minutes because they work at the same time.
+
+How It Looks in Code
+
+Here’s how the tests might look:
+
+def test_puzzle1():
+    assert 1 + 1 == 2
+
+def test_puzzle2():
+    assert 2 + 2 == 4
+
+def test_puzzle3():
+    assert 3 + 3 == 6
+
+def test_puzzle4():
+    assert 4 + 4 == 8
+
+If you run these tests with:
+
+pytest -n 2
+
+• Worker 1 solves test_puzzle1 and test_puzzle2.
+• Worker 2 solves test_puzzle3 and test_puzzle4.
+
+Key Terms for 5th Graders
+• Worker: A “student” helping to solve problems (run tests).
+• Parallel Testing: Solving problems at the same time on one computer.
+• Distributed Testing: Solving problems at the same time on multiple computers.
+
+Summary
+• Parallel Testing: Like dividing homework among a few students in the same room.
+• Distributed Testing: Like dividing homework among students in different classrooms.
+• Why? To save time and finish big tasks quickly.
+• Tool: Use pytest-xdist to run parallel or distributed tests.
+
+This way, testing becomes faster and smarter, just like teamwork in real life!

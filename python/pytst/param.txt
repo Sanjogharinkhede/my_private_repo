@@ -1,0 +1,71 @@
+Parameterizing tests in pytest allows you to run the same test function with
+multiple sets of input data. This is done using the @pytest.mark.parametrize decorator.
+
+Syntax
+
+@pytest.mark.parametrize("parameter_names", [list_of_values])
+
+• parameter_names: A comma-separated string of parameter names.
+• list_of_values: A list of tuples containing values for each parameter.
+
+Example 1: Single Parameter
+
+import pytest
+
+@pytest.mark.parametrize("number", [1, 2, 3, 4])
+def test_is_positive(number):
+    assert number > 0
+
+This test will run four times, once for each value in [1, 2, 3, 4].
+
+Example 2: Multiple Parameters
+
+import pytest
+
+@pytest.mark.parametrize("a, b, result", [
+    (1, 2, 3),
+    (2, 3, 5),
+    (3, 5, 8),
+])
+def test_addition(a, b, result):
+    assert a + b == result
+
+This test will run three times with the parameter sets (1, 2, 3), (2, 3, 5), and (3, 5, 8).
+
+Example 3: Using Fixtures with Parameterization
+
+You can combine fixtures and parameterization for more complex scenarios.
+
+import pytest
+
+@pytest.fixture
+def base_number():
+    return 10
+
+@pytest.mark.parametrize("multiplier, result", [
+    (1, 10),
+    (2, 20),
+    (3, 30),
+])
+def test_multiplication(base_number, multiplier, result):
+    assert base_number * multiplier == result
+
+Example 4: Parameterizing Test IDs
+
+You can provide custom IDs for better readability in the test output.
+
+@pytest.mark.parametrize("a, b, result", [
+    (1, 2, 3),
+    (2, 3, 5),
+    (3, 5, 8),
+], ids=["1+2=3", "2+3=5", "3+5=8"])
+def test_addition(a, b, result):
+    assert a + b == result
+
+Running the Tests
+
+Run pytest as usual:
+
+pytest
+
+The output will show each parameterized test case individually. This makes debugging and understanding test results easier.

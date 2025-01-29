@@ -1,0 +1,346 @@
+Questions
+1. What is SQLite?
+a) A programming language
+b) A library for creating GUIs
+c) A lightweight, serverless database engine
+d) A Python module
+
+C
+===========================
+
+
+2. Which Python module is used to work with SQLite databases?
+a) sqlite
+b) sqlite3
+c) sqlite_connector
+d) database3
+
+B
+===========================
+
+3. What method is used to execute an SQL query in SQLite3 using Python?
+a) execute_query()
+b) run_sql()
+c) execute()
+d) run()
+
+C
+===========================
+
+4. What method is used to save changes made to a database in SQLite3?
+a) save()
+b) commit()
+c) close()
+d) update()
+
+B
+===========================
+
+5. How can you create a connection to an SQLite database in Python?
+a) sqlite3.open()
+b) sqlite3.connect()
+c) sqlite3.start()
+d) sqlite3.database()
+
+B
+===========================
+
+6. What type of data is returned by the fetchone() method in SQLite3?
+a) A dictionary
+b) A tuple
+c) A list
+d) None
+
+B
+===========================
+
+7. What will happen if the database file specified in sqlite3.connect() does not exist?
+a) An error is thrown
+b) A new database file is created
+c) The program will terminate
+d) None of the above
+
+B
+===========================
+
+8. What SQL command is used to create a new table?
+a) CREATE TABLE
+b) INSERT INTO
+c) NEW TABLE
+d) ADD TABLE
+
+A
+===========================
+
+9. How do you delete a table in SQLite?
+a) REMOVE TABLE
+b) DROP TABLE
+c) DELETE TABLE
+d) CLEAR TABLE
+
+B
+===========================
+
+10. Which method is used to fetch all results from a query in SQLite3?
+a) fetch()
+b) fetchall()
+c) fetchmany()
+d) fetchone()
+
+B
+===========================
+
+
+
+
+
+
+1. What Python method is used to execute an SQL query to create a table in MySQL?
+a) run()
+b) execute()
+c) create()
+d) exec_sql()
+
+B
+===========================
+
+2. Write a Python code snippet to create a MySQL table named employees with columns id, name, and salary.
+
+conn = sqlite3.connect('library_management.db',autocommit=False)
+cursor = conn.cursor()
+create_query = ('''CREATE TABLE IF NOT EXISTS employees(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Name VARCHAR(100) NOT NULL,
+                salary DOUBLE(10,2),
+                );''')
+cursor.execute(create_query)
+conn.commit()
+cursor.close()
+conn.close()
+
+===========================
+
+3. Which SQL keyword is used in Python to insert data into a MySQL table?
+a) INSERT
+b) CREATE
+c) ADD
+d) UPDATE
+
+
+A
+===========================
+
+
+READ Questions
+4. What is the difference between the fetchone() and fetchall() methods in MySQL when using Python?
+
+returns first tuple of table,first data
+returns list of tuple of table all data
+
+
+5. Write a Python code snippet to retrieve all rows from a table named products.
+
+
+
+6. If you want to fetch only the top 5 rows from a MySQL table, which SQL query should you use in Python?
+a) SELECT * FROM table LIMIT 5
+b) SELECT TOP 5 * FROM table
+c) FETCH 5 * FROM table
+d) LIMIT 5 SELECT * FROM table
+
+A
+===========================
+
+
+UPDATE Questions
+7. Which Python method is used to save changes to a MySQL database after an UPDATE query?
+a) commit()
+b) execute()
+c) save()
+d) update()
+
+A
+===========================
+
+
+8. Write a Python query to update the salary of an employee with id = 101 to 50,000 in the employees table.
+
+Update employees set salary=salary*1.10 where id between 101 and 50000
+
+
+DELETE Questions
+9. What SQL query can be used in Python to delete rows where the age is greater than 60 in a MySQL table named users?
+Delete From users where age>60
+
+10. Write a Python function to delete all records from a MySQL table named orders.
+
+Truncate orders
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+1. CSV Basics
+
+Q1: Which Python library is commonly used to read and write CSV files?
+• a) os
+• b) csv
+• c) math
+• d) json
+
+B
+===========================
+
+
+Q2: Given the following CSV file content saved as data.csv:
+
+Name,Age,Grade
+Alice,12,A
+Bob,13,B
+Charlie,11,A
+
+
+
+
+What will this code output?
+
+import csv
+
+with open('data.csv', mode='r') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row['Name'])
+
+• a) ['Alice', 'Bob', 'Charlie']
+• b) Alice\nBob\nCharlie
+• c) {'Name': 'Alice', 'Age': '12', 'Grade': 'A'}
+
+
+B
+===========================
+
+Q3: Write a Python code snippet to add a new row ["Daisy", 14, "B"] to a CSV file named students.csv.
+
+def create_csv():
+    new_row = [Daisy, 14, "B"]
+    with open('students.csv', mode='a', newline='\n') as file:
+        writer = csv.writer(file)
+        writer.writerow(new_row)
+
+
+2. JSON Basics
+
+Q4: What is the primary Python library used to work with JSON files?
+• a) json
+• b) pickle
+• c) xml.etree.ElementTree
+• d) csv
+
+
+A
+===========================
+
+Q5: Given the JSON data:
+
+{
+  "students": [
+    {"name": "Alice", "age": 12},
+    {"name": "Bob", "age": 13}
+  ]
+}
+
+Which code snippet extracts the name of the first student?
+• a) data["name"][0]
+• b) data["students"]["name"][0]
+• c) data["students"][0]["name"]
+• d) data["students"]["name"]
+
+
+
+C
+===========================
+
+
+Q6: Fill in the blanks to load JSON data from a file named data.json:
+
+import json
+
+with open("data.json", "r") as file:
+    data = json.___(file)
+
+
+ load
+===========================
+
+
+3. XML Basics
+
+Q7: Which library can be used to parse and manipulate XML files in Python?
+(Select all that apply)
+• a) pandas
+• b) xml.etree.ElementTree
+• c) lxml
+• d) beautifulsoup4
+
+
+B,c,d
+===========================
+
+
+Q8: Given the XML data:
+
+<students>
+    <student>
+        <name>Alice</name>
+        <age>12</age>
+    </student>
+    <student>
+        <name>Bob</name>
+        <age>13</age>
+    </student>
+</students>
+
+What is the output of this code?
+
+import xml.etree.ElementTree as ET
+
+tree = ET.parse("students.xml")
+root = tree.getroot()
+
+for student in root.findall("student"):
+    print(student.find("name").text)
+
+• a) Alice\nBob
+• b) ['Alice', 'Bob']
+• c) {'name': 'Alice', 'age': '12'}
+
+
+A
+===========================
+
+Q9: Write a Python code snippet to update Bob’s age to 14 in the XML data above using xml.etree.ElementTree.
+
+def modify():
+    for elem in root.findall('./student'):
+        name = elem.find('name')
+        if name.text == "Bob":
+            age = elem.find('age')
+            if age is not None:
+                age.text = "14"
+                break;
+        tree.write("students.xml")
+
+
+
+4. General Knowledge
+
+Q10: Which of the following formats is best suited for hierarchical or nested data structures?
+• a) CSV
+• b) JSON
+• c) XML
+• d) Both JSON and XML
+
+
+D
+===========================

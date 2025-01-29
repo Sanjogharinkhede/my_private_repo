@@ -1,0 +1,136 @@
+CRUD operations (Create, Read, Update, Delete) allow you to manipulate data stored in a file, such as a JSON file.
+Below, I’ll walk you through performing each of these operations on a JSON file.
+
+Assuming our JSON file (person_data.json) has the following structure:
+
+{
+  "name": "Alice",
+  "age": 30,
+  "email": "alice@example.com",
+  "is_active": true,
+  "address": {
+    "street": "123 Wonderland Ave",
+    "city": "Wonderland",
+    "postal_code": "12345"
+  },
+  "friends": [
+    {"name": "Bob", "age": 28},
+    {"name": "Charlie", "age": 35},
+    {"name": "David", "age": 27}
+  ]
+}
+
+1. Create: Adding New Data
+
+To add new data to the JSON file, you can load the existing data, modify it, and then save it back to the file.
+
+Example: Add a new friend to the “friends” list.
+
+import json
+
+# Read the existing data from the JSON file
+with open("person_data.json", "r") as file:
+    data = json.load(file)
+
+# Add a new friend to the list
+new_friend = {"name": "Eve", "age": 29}
+data["friends"].append(new_friend)
+
+# Write the updated data back to the JSON file
+with open("person_data.json", "w") as file:
+    json.dump(data, file, indent=4)
+
+print("Friend added successfully!")
+
+2. Read: Reading Data from JSON File
+
+To read the data from a JSON file, use json.load().
+
+Example: Read and print the data from the file.
+
+import json
+
+# Read the data from the JSON file
+with open("person_data.json", "r") as file:
+    data = json.load(file)
+
+# Print the data
+print(json.dumps(data, indent=4))
+
+3. Update: Modifying Existing Data
+
+To update existing data, load the data, modify the necessary fields, and save it back to the file.
+
+Example: Update Alice’s age and email.
+
+import json
+
+# Read the data from the JSON file
+with open("person_data.json", "r") as file:
+    data = json.load(file)
+
+# Modify Alice's age and email
+data["age"] = 31
+data["email"] = "alice_new@example.com"
+
+# Write the updated data back to the JSON file
+with open("person_data.json", "w") as file:
+    json.dump(data, file, indent=4)
+
+print("Data updated successfully!")
+
+4. Delete: Removing Data
+
+To delete data, load the file, remove the data, and then save the updated file.
+
+Example: Delete a friend from the “friends” list.
+
+import json
+
+# Read the data from the JSON file
+with open("person_data.json", "r") as file:
+    data = json.load(file)
+
+# Remove a friend (e.g., Bob) from the list
+data["friends"] = [friend for friend in data["friends"] if friend["name"] != "Bob"]
+
+# Write the updated data back to the JSON file
+with open("person_data.json", "w") as file:
+    json.dump(data, file, indent=4)
+
+print("Friend deleted successfully!")
+
+Full Example for All CRUD Operations:
+
+import json
+
+# Read the existing data from the JSON file
+with open("person_data.json", "r") as file:
+    data = json.load(file)
+
+# --- CREATE: Add a new friend
+new_friend = {"name": "Eve", "age": 29}
+data["friends"].append(new_friend)
+
+# --- READ: Print the data
+print("Data after adding a friend:")
+print(json.dumps(data, indent=4))
+
+# --- UPDATE: Update Alice's age and email
+data["age"] = 31
+data["email"] = "alice_new@example.com"
+
+# --- DELETE: Remove a friend (e.g., Bob)
+data["friends"] = [friend for friend in data["friends"] if friend["name"] != "Bob"]
+
+# Write the updated data back to the JSON file
+with open("person_data.json", "w") as file:
+    json.dump(data, file, indent=4)
+
+print("Data updated and saved successfully!")
+
+Key Notes:
+• Create: Add new data to a list or dictionary.
+• Read: Use json.load() to read from a file.
+• Update: Modify the loaded data and save it back.
+• Delete: Remove data by filtering or using del to remove a key.

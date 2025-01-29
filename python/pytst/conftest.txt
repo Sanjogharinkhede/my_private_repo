@@ -1,0 +1,77 @@
+conftest.py is a central configuration file in pytest that helps manage fixtures and hooks shared across multiple test files in a project.
+It eliminates the need for duplicating setup or configuration code and provides a clear, maintainable structure for testing.
+
+1. What is conftest.py?
+• conftest.py is a special file recognized by pytest that:
+• Defines reusable fixtures.
+• Provides configuration for plugins.
+• Implements hooks for customizing pytest’s behavior.
+• It is automatically discovered by pytest without needing imports, provided it is located in the same directory or
+  a parent directory of the test files.
+
+2. Location of conftest.py
+• Place conftest.py at the root of your test directory or in subdirectories where shared fixtures are needed.
+• Fixtures defined in conftest.py are available to all test files in the same directory or subdirectories.
+
+Example Directory Structure:
+
+project/
+│
+├── app/
+│   ├── main.py
+│   └── utils.py
+│
+├── tests/
+│   ├── conftest.py
+│   ├── test_main.py
+│   └── test_utils.py
+
+In this structure:
+• conftest.py will provide fixtures to test_main.py and test_utils.py.
+
+3. Why Use conftest.py?
+• Centralized Fixture Management: Define common fixtures (e.g., database connections, test data) in one place.
+• Avoid Duplication: No need to redefine fixtures in every test file.
+• Automatic Discovery: pytest makes all fixtures in conftest.py automatically available to tests.
+
+4. Writing Fixtures in conftest.py
+
+Fixtures in conftest.py can provide reusable setup and teardown logic.
+
+
+
+
+
+What is a Fixture?
+
+Imagine you’re setting up a game. Before you start, you need to do some things first—like setting up the board,
+arranging the pieces, or shuffling the cards. A fixture in pytest works the same way. It helps set everything up before the test starts
+and can also clean up after the test is done.
+
+For example:
+• If you’re testing a toy car, a fixture might set up the car on a flat surface before testing it.
+• If you’re testing a cookie recipe, a fixture might prepare the ingredients for you.
+
+In programming, a fixture helps prepare the data, tools, or environment needed to test something. It’s like your helper that gets everything ready!
+
+
+-------------------------------------------------------------------------------------------
+Parameterizing tests in pytest allows you to run the same test function with
+multiple sets of input data. This is done using the @pytest.mark.parametrize decorator.
+
+Syntax
+
+@pytest.mark.parametrize("parameter_names", [list_of_values])
+
+• parameter_names: A comma-separated string of parameter names.
+• list_of_values: A list of tuples containing values for each parameter.
+
+Example 1: Single Parameter
+
+import pytest
+
+@pytest.mark.parametrize("number", [1, 2, 3, 4])
+def test_is_positive(number):
+    assert number > 0
+
+This test will run four times, once for each value in [1, 2, 3, 4].

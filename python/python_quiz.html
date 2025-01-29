@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="icon" type="image/x-icon" href="Sdlc/software-testing.jpg">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="../style.css">
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg " style=" background: linear-gradient(to right,#e82222,#f24141,#da5555);">
+    <div class="container-fluid justify-content-center">
+    <a class="navbar-brand text-white " href="/index.html">NMS</a>
+
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <div class="container-fluid justify-content-center">  
+      <div class="" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page"  href="/index.html">Assignments</a>
+          <a class="nav-link" aria-current="page" href="/python/python_quiz.html">Python Quiz</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-4 " style="padding-bottom:50px ;">
+    <h4>Python Quiz</h4>
+
+    <ul class="nav nav-tabs" id="quizTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="day1-tab" data-bs-toggle="tab" data-bs-target="#day1" type="button" role="tab" aria-controls="day1" aria-selected="true">Day 1</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day2-tab" data-bs-toggle="tab" data-bs-target="#day2" type="button" role="tab" aria-controls="day2" aria-selected="false">Day 2</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day3-tab" data-bs-toggle="tab" data-bs-target="#day3" type="button" role="tab" aria-controls="day3" aria-selected="false">Day 3</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day4-tab" data-bs-toggle="tab" data-bs-target="#day4" type="button" role="tab" aria-controls="day4" aria-selected="false">Day 4</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day5-tab" data-bs-toggle="tab" data-bs-target="#day5" type="button" role="tab" aria-controls="day5" aria-selected="false">Day 5</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="quizTabsContent">
+      <div class="tab-pane fade show active" id="day1" role="tabpanel" aria-labelledby="day1-tab">
+        <div id="questionContainerDay1" class="mt-3"></div>
+      </div>
+      <div class="tab-pane fade" id="day2" role="tabpanel" aria-labelledby="day2-tab">
+        <div id="questionContainerDay2" class="mt-3"></div>
+      </div>
+      <div class="tab-pane fade" id="day3" role="tabpanel" aria-labelledby="day3-tab">
+        <div id="questionContainerDay3" class="mt-3"></div>
+      </div>
+      <div class="tab-pane fade" id="day4" role="tabpanel" aria-labelledby="day4-tab">
+        <div id="questionContainerDay4" class="mt-3"></div>
+      </div>
+      <div class="tab-pane fade" id="day5" role="tabpanel" aria-labelledby="day5-tab">
+        <div id="questionContainerDay5" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container ">
+    <footer class="d-flex flex-wrap  fixed-bottom bg-light justify-content-center align-items-center py-2 my-2 border-top">
+      <div class="col-md-6 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+        <span class="text-muted">© 2025 Created with dedication and passion by Sanjog Harinkhede.</span>
+      </div>
+      <ul class="nav col-md-6 mt-4 mt-md-0 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a href="tel:8827444726" ><i class="fa-solid fa-phone" style="width: 30px; height: 30px;"></i></a></li>
+        <li class="ms-3"><a href="mailto:sanjogjharinkhede@gmail.com" ><i class="fa-solid fa-envelope" style="width: 30px; height: 30px;"></i></a></li>
+        <li class="ms-3"><a href="https://www.linkedin.com/in/sanjogharinkhede" target="_blank"><i class="fa-brands fa-linkedin" style="width: 30px; height: 30px;"></i></a></li>
+        <li class="ms-3"><a href="https://leetcode.com/u/sanjogharinkhede/" target="_blank"><img src="https://user-images.githubusercontent.com/63964149/152531278-5e01909d-0c2e-412a-8acc-4a06863c244d.png" style="width: 30px; height: 30px;"></img></a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
