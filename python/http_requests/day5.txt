@@ -126,6 +126,7 @@ print(response.json())
 
 """
 
+================================================================================================================
 
 
 API Integration Techniques
@@ -225,3 +226,647 @@ Explanation:
 4. Sending a DELETE Request
  
 A DELETE request is used to remove a resource from the server
+
+
+
+
+
+================================================================================================================
+
+
+Parsing and Utilizing API Data in Python
+ 
+When working with APIs, the response is often in JSON format.
+Python provides built-in methods to parse, extract, and utilize this data efficiently.
+ 
+1. Parsing API Data (JSON)
+ 
+Most RESTful APIs return data in JSON format, which is structured as key-value pairs.
+ 
+Example: Parsing JSON API Response
+ 
+import requests
+ 
+# Define API endpoint
+url = "https://jsonplaceholder.typicode.com/posts"
+ 
+# Send GET request
+response = requests.get(url)
+ 
+# Convert JSON response to Python dictionary
+if response.status_code == 200:
+    data = response.json()  # Convert JSON response to a Python dictionary
+    print("First Post Title:", data[0]["title"])  # Access first post title
+else:
+    print("Error:", response.status_code)
+ 
+Explanation:
+• response.json() converts the API response (JSON format) into a Python dictionary.
+• You can then access values using dictionary keys, such as data[0]["title"].
+ 
+2. API Rate Limits and Pagination
+ 
+Most APIs impose rate limits to prevent excessive requests 
+and implement pagination to handle large data sets efficiently.
+ 
+Understanding API Rate Limits
+ 
+Many APIs restrict:
+• Requests per minute/hour/day (e.g., 1000 requests per hour).
+• Requests per user/IP.
+• Requests per API key.
+ 
+APIs often return rate limit information in response headers.
+ 
+Checking API Rate Limits
+ 
+Some APIs (like GitHub) provide rate limit details.
+ 
+import requests
+ 
+# GitHub API endpoint
+url = "https://api.github.com/rate_limit"
+ 
+# Send GET request
+response = requests.get(url)
+ 
+# Print rate limit information
+if response.status_code == 200:
+    rate_info = response.json()
+    print("Remaining Requests:", rate_info['rate']['remaining'])
+    print("Reset Time:", rate_info['rate']['reset'])
+ 
+3. Handling Pagination
+ 
+When an API returns large datasets, 
+it paginates the response—returning only a subset of data per request.
+ 
+Example: Handling Pagination
+ 
+import requests
+ 
+# API endpoint with pagination
+url = "https://jsonplaceholder.typicode.com/posts"
+ 
+# Number of posts per request
+params = {"_limit": 5, "_page": 1}  # Limit to 5 results per page
+ 
+while True:
+    response = requests.get(url, params=params)
+    if response.status_code != 200:
+        break
+ 
+    data = response.json()
+    if not data:  # Stop when no more data
+        break
+    for post in data:
+        print(f"Title: {post['title']}")
+ 
+    params["_page"] += 1  # Move to the next page
+ 
+Explanation:
+• _limit=5 restricts each request to 5 results per page.
+• _page controls which page of results to fetch.
+• The loop continues until no more data is returned.
+ 
+4. Best Practices for Frequent API Calls
+ 
+To avoid hitting API limits and optimize performance, follow these best practices:
+ 
+1. Implement Rate Limiting Handling
+ 
+If an API enforces rate limits, handle it gracefully.
+ 
+import requests
+import time
+ 
+url = "https://api.example.com/data"
+ 
+while True:
+    response = requests.get(url)
+    if response.status_code == 429:  # 429: Too Many Requests
+        retry_after = int(response.headers.get("Retry-After", 5))  # Default 5 sec
+        print(f"Rate limit exceeded. Retrying in {retry_after} seconds...")
+        time.sleep(retry_after)
+    else:
+        break  # Exit loop if successful
+ 
+2. Cache API Responses
+ 
+If you frequently request the same data, caching reduces API calls.
+ 
+import requests
+import json
+ 
+cache_file = "cache.json"
+ 
+# Check if data is already cached
+try:
+    with open(cache_file, "r") as file:
+        data = json.load(file)
+        print("Using Cached Data:", data)
+except (FileNotFoundError, json.JSONDecodeError):
+    # Fetch fresh data
+    response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+    if response.status_code == 200:
+        data = response.json()
+        with open(cache_file, "w") as file:
+            json.dump(data, file)
+        print("Fetched New Data:", data)
+
+======================================================================================================================================
+
+
+
+
+Best Practices and Error Handling in Python API Requests
+ 
+When integrating APIs in Python, ensuring reliability,
+efficiency, and graceful error handling is crucial. 
+Below are the best practices for handling errors,
+  optimizing API calls, caching, logging, and debugging.
+ 
+1. Error Handling Strategies
+ 
+APIs can fail due to various reasons:
+• Server issues (e.g., 500 Internal Server Error)
+• Rate limits exceeded (e.g., 429 Too Many Requests)
+• Invalid requests (e.g., 400 Bad Request)
+• Authentication failures (e.g., 401 Unauthorized)
+ 
+Handling Different HTTP Errors in Python (Using requests)
+ 
+import requests
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raises an error for HTTP errors
+ 
+    data = response.json()
+    print("Data received:", data)
+ 
+except requests.exceptions.HTTPError as errh:
+    print("HTTP Error:", errh)
+except requests.exceptions.ConnectionError as errc:
+    print("Connection Error:", errc)
+except requests.exceptions.Timeout as errt:
+    print("Timeout Error:", errt)
+except requests.exceptions.RequestException as err:
+    print("General Error:", err)
+ 
+Explanation:
+• raise_for_status() raises an exception for 4xx or 5xx HTTP errors.
+• requests.exceptions.ConnectionError: Handles network-related issues.
+• requests.exceptions.Timeout: Handles request timeouts.
+• requests.exceptions.RequestException: Catches all other errors.
+ 
+2. Graceful Error Handling
+ 
+Instead of crashing, APIs should handle errors gracefully and retry failed requests when needed.
+ 
+Retry Failed Requests Automatically
+ 
+import requests
+import time
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+max_retries = 3  # Maximum retry attempts
+retry_delay = 2  # Delay between retries (in seconds)
+ 
+for attempt in range(max_retries):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  
+        print("Data:", response.json())
+        break  # Exit loop on success
+ 
+    except requests.exceptions.RequestException as e:
+        print(f"Attempt {attempt + 1} failed: {e}")
+        time.sleep(retry_delay)  # Wait before retrying
+ 
+else:
+    print("Max retries reached. Request failed.")
+ 
+Explanation:
+• The script retries a failed request up to 3 times.
+• Waits 2 seconds before retrying (time.sleep(retry_delay)).
+• Uses else to execute only if all retries fail.
+ 
+3. Common Pitfalls in API Integration
+ 
+Mistake 1: Not Checking API Response Status
+ 
+❌ Bad Code:
+ 
+response = requests.get("https://api.example.com/data")
+data = response.json()  # May cause an error if the response is not JSON.
+ 
+✅ Fixed:
+ 
+if response.status_code == 200:
+    data = response.json()
+else:
+    print("Error:", response.status_code)
+ 
+Mistake 2: Hardcoding API Keys in Code
+ 
+❌ Bad Code:
+ 
+api_key = "my_secret_api_key"  # This can be exposed!
+ 
+✅ Fixed: Use Environment Variables
+ 
+import os
+api_key = os.getenv("API_KEY")  # Store API key in environment variables
+ 
+4. Best Practices in API Calls
+ 
+1. Use Headers for Authentication
+ 
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+response = requests.get("https://api.example.com/data", headers=headers)
+ 
+2. Optimize Query Parameters to Fetch Only Needed Data
+ 
+params = {"fields": "name,email"}  # Get only necessary fields
+response = requests.get("https://api.example.com/users", params=params)
+ 
+3. Implement API Rate Limit Handling (429 Too Many Requests)
+ 
+if response.status_code == 429:
+    retry_after = int(response.headers.get("Retry-After", 5))  # Default 5 sec
+    print(f"Rate limit exceeded. Retrying in {retry_after} seconds...")
+    time.sleep(retry_after)
+ 
+5. Optimizing Requests
+ 
+1. Use Session Objects for Persistent Connections
+ 
+Instead of opening a new connection for every request, use a session to reduce latency.
+ 
+import requests
+ 
+session = requests.Session()
+ 
+# Set common headers
+session.headers.update({"Authorization": "Bearer YOUR_API_KEY"})
+ 
+response = session.get("https://api.example.com/data")
+print(response.json())
+ 
+2. Use Compression to Reduce Data Transfer
+ 
+ 
+ 
+ 
+Ask the API to return compressed responses to save bandwidth.
+ 
+headers = {"Accept-Encoding": "gzip"}
+response = requests.get("https://api.example.com/data", headers=headers)
+ 
+6. Caching Strategies
+ 
+Frequent API calls for the same data waste resources. Use caching to store responses
+and reuse them.
+ 
+1. Using a Simple Dictionary-Based Cache
+ 
+import requests
+import time
+ 
+cache = {}
+ 
+def get_data(url):
+    if url in cache and (time.time() - cache[url]["time"] < 60):  # Cache valid for 60 sec
+        print("Returning Cached Data")
+        return cache[url]["data"]
+    response = requests.get(url)
+    if response.status_code == 200:
+        cache[url] = {"data": response.json(), "time": time.time()}
+        return cache[url]["data"]
+    return None
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+print(get_data(url))
+
+
+
+==============================================================================================================
+
+Best Practices and Error Handling in Python API Requests
+ 
+When integrating APIs in Python, ensuring reliability,
+
+efficiency, and graceful error handling is crucial. 
+
+Below are the best practices for handling errors,
+
+  optimizing API calls, caching, logging, and debugging.
+ 
+1. Error Handling Strategies
+ 
+APIs can fail due to various reasons:
+
+• Server issues (e.g., 500 Internal Server Error)
+
+• Rate limits exceeded (e.g., 429 Too Many Requests)
+
+• Invalid requests (e.g., 400 Bad Request)
+
+• Authentication failures (e.g., 401 Unauthorized)
+ 
+Handling Different HTTP Errors in Python (Using requests)
+ 
+import requests
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+try:
+
+    response = requests.get(url)
+
+    response.raise_for_status()  # Raises an error for HTTP errors
+ 
+    data = response.json()
+
+    print("Data received:", data)
+ 
+except requests.exceptions.HTTPError as errh:
+
+    print("HTTP Error:", errh)
+
+except requests.exceptions.ConnectionError as errc:
+
+    print("Connection Error:", errc)
+
+except requests.exceptions.Timeout as errt:
+
+    print("Timeout Error:", errt)
+
+except requests.exceptions.RequestException as err:
+
+    print("General Error:", err)
+ 
+Explanation:
+
+• raise_for_status() raises an exception for 4xx or 5xx HTTP errors.
+
+• requests.exceptions.ConnectionError: Handles network-related issues.
+
+• requests.exceptions.Timeout: Handles request timeouts.
+
+• requests.exceptions.RequestException: Catches all other errors.
+ 
+2. Graceful Error Handling
+ 
+Instead of crashing, APIs should handle errors gracefully and retry failed requests when needed.
+ 
+Retry Failed Requests Automatically
+ 
+import requests
+
+import time
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+max_retries = 3  # Maximum retry attempts
+
+retry_delay = 2  # Delay between retries (in seconds)
+ 
+for attempt in range(max_retries):
+
+    try:
+
+        response = requests.get(url)
+
+        response.raise_for_status()  
+
+        print("Data:", response.json())
+
+        break  # Exit loop on success
+ 
+    except requests.exceptions.RequestException as e:
+
+        print(f"Attempt {attempt + 1} failed: {e}")
+
+        time.sleep(retry_delay)  # Wait before retrying
+ 
+else:
+
+    print("Max retries reached. Request failed.")
+ 
+Explanation:
+
+• The script retries a failed request up to 3 times.
+
+• Waits 2 seconds before retrying (time.sleep(retry_delay)).
+
+• Uses else to execute only if all retries fail.
+ 
+3. Common Pitfalls in API Integration
+ 
+Mistake 1: Not Checking API Response Status
+ 
+❌ Bad Code:
+ 
+response = requests.get("https://api.example.com/data")
+
+data = response.json()  # May cause an error if the response is not JSON.
+ 
+✅ Fixed:
+ 
+if response.status_code == 200:
+
+    data = response.json()
+
+else:
+
+    print("Error:", response.status_code)
+ 
+Mistake 2: Hardcoding API Keys in Code
+ 
+❌ Bad Code:
+ 
+api_key = "my_secret_api_key"  # This can be exposed!
+ 
+✅ Fixed: Use Environment Variables
+ 
+import os
+
+api_key = os.getenv("API_KEY")  # Store API key in environment variables
+ 
+4. Best Practices in API Calls
+ 
+1. Use Headers for Authentication
+ 
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+
+response = requests.get("https://api.example.com/data", headers=headers)
+ 
+2. Optimize Query Parameters to Fetch Only Needed Data
+ 
+params = {"fields": "name,email"}  # Get only necessary fields
+
+response = requests.get("https://api.example.com/users", params=params)
+ 
+3. Implement API Rate Limit Handling (429 Too Many Requests)
+ 
+if response.status_code == 429:
+
+    retry_after = int(response.headers.get("Retry-After", 5))  # Default 5 sec
+
+    print(f"Rate limit exceeded. Retrying in {retry_after} seconds...")
+
+    time.sleep(retry_after)
+ 
+5. Optimizing Requests
+ 
+1. Use Session Objects for Persistent Connections
+ 
+Instead of opening a new connection for every request, use a session to reduce latency.
+ 
+import requests
+ 
+session = requests.Session()
+ 
+# Set common headers
+
+session.headers.update({"Authorization": "Bearer YOUR_API_KEY"})
+ 
+response = session.get("https://api.example.com/data")
+
+print(response.json())
+ 
+2. Use Compression to Reduce Data Transfer
+ 
+ 
+ 
+ 
+Ask the API to return compressed responses to save bandwidth.
+ 
+headers = {"Accept-Encoding": "gzip"}
+
+response = requests.get("https://api.example.com/data", headers=headers)
+ 
+6. Caching Strategies
+ 
+Frequent API calls for the same data waste resources. Use caching to store responses
+
+and reuse them.
+ 
+1. Using a Simple Dictionary-Based Cache
+ 
+import requests
+
+import time
+ 
+cache = {}
+ 
+def get_data(url):
+
+    if url in cache and (time.time() - cache[url]["time"] < 60):  # Cache valid for 60 sec
+
+        print("Returning Cached Data")
+
+        return cache[url]["data"]
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        cache[url] = {"data": response.json(), "time": time.time()}
+
+        return cache[url]["data"]
+
+    return None
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+
+print(get_data(url))
+ 
+7. Logging and Debugging
+ 
+Logging requests and responses helps debug issues and monitor API performance.
+ 
+1. Logging API Requests
+ 
+import requests
+
+import logging
+ 
+logging.basicConfig(filename="api_requests.log", level=logging.INFO)
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+response = requests.get(url)
+ 
+if response.status_code == 200:
+
+    logging.info(f"Success: {url} - {response.status_code}")
+
+else:
+
+    logging.error(f"Error: {url} - {response.status_code}")
+ 
+2. Enable Debugging in requests
+ 
+import requests
+
+import logging
+ 
+# Enable debugging for requests
+
+logging.basicConfig(level=logging.DEBUG)
+ 
+response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+ 
+This logs request headers, response headers, and errors for debugging.
+ 
+Summary Table
+ 
+Best Practice Explanation
+
+Error Handling Use raise_for_status(), handle different exceptions.
+
+Graceful Handling Implement retries and exponential backoff for failures.
+
+Avoid API Pitfalls Check response status, avoid hardcoding API keys.
+
+Optimizing Requests Use persistent sessions, compression, and query optimizations.
+
+Rate Limit Handling Handle 429 Too Many Requests responses using Retry-After headers.
+
+Caching Strategies Cache frequently requested API responses to reduce load.
+
+Logging & Debugging Log API requests and responses for monitoring and debugging.
+ 
+Final Thoughts
+
+• Always handle errors properly to prevent crashes.
+
+• Optimize API calls to reduce unnecessary requests.
+
+• Use logging and debugging for troubleshooting.
+
+• Implement caching to avoid hitting API limits frequently.
+ 
+By following these best practices, your API integrations will be efficient, reliable, and scalable. 🚀
+ 
+import requests
+import logging
+ 
+logging.basicConfig(filename="api_requests.log", level=logging.DEBUG)
+ 
+url = "https://jsonplaceholder.typicode.com/posts/1"
+ 
+response = requests.get(url)
+ 
+if response.status_code == 200:
+    logging.info(f"Success: {url} - {response.status_code}")
+else:
+    logging.error(f"Error: {url} - {response.status_code}")
+ 
+ 

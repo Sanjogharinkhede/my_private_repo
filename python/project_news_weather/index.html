@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News & Weather</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+     <style>
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #2c3e50 !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #2c3e50 !important;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.weather-card, .news-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover, .news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card h2, .news-card h2 {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.weather-card p, .news-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.news-card .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.news-card .card-title {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.news-card .card-text {
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  color: #555;
+}
+     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">NeWe</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Weather</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Weather Section -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="weather-card">
+              <h2>Weather</h2>
+              <div class="input-group mb-3">
+                <input type="text" id="cityInput" class="form-control" placeholder="Enter city name" aria-label="City">
+                <button class="btn btn-primary" onclick="updateWeather()">Get Weather</button>
+              </div>
+              <div id="weather">
+                <p>Enter a city to see the weather.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- News Section -->
+          <div class="col-md-6">
+            <div class="news-card">
+              <h2>News</h2>
+              <div class="input-group mb-3">
+                <input type="text" id="newsQuery" class="form-control" placeholder="Search for news (e.g., Elon Musk)" aria-label="News Query">
+                <button class="btn btn-primary" onclick="updateNews()">Search News</button>
+              </div>
+              <div id="news">
+                <p>Enter a topic to see news.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Footer -->
+    <div class="container ">
+        <footer class="d-flex flex-wrap  fixed-bottom bg-light justify-content-center align-items-center py-2 my-2 border-top">
+          <div class="col-md-6 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <span class="text-muted">© 2025 Created with dedication and passion by Sanjog Harinkhede.</span>
+          </div>
+          <ul class="nav col-md-6 mt-4 mt-md-0 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a href="tel:8827444726" ><i class="fa-solid fa-phone" style="width: 30px; height: 30px;"></i></a></li>
+            <li class="ms-3"><a href="mailto:sanjogjharinkhede@gmail.com" ><i class="fa-solid fa-envelope" style="width: 30px; height: 30px;"></i></a></li>
+            <li class="ms-3"><a href="https://www.linkedin.com/in/sanjogharinkhede" target="_blank"><i class="fa-brands fa-linkedin" style="width: 30px; height: 30px;"></i></a></li>
+            <li class="ms-3"><a href="https://leetcode.com/u/sanjogharinkhede/" target="_blank"><img src="https://user-images.githubusercontent.com/63964149/152531278-5e01909d-0c2e-412a-8acc-4a06863c244d.png" style="width: 30px; height: 30px;"></img></a></li>
+          </ul>
+        </footer>
+      </div>
+
+    <!-- Bootstrap 5 JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <!-- <script src="./script.js"></script> -->
+     <script>
+
+        // Function to update weather data
+function updateWeather() {
+  const city = document.getElementById('cityInput').value;
+  if (!city) {
+    alert('Please enter a city name.');
+    return;
+  }
+
+  // Call Python backend to fetch weather data
+  fetch(`/update_weather?city=${city}`)
+    .then(() => {
+      // Reload weather data from JSON file
+      fetch('weather.json')
+        .then(response => response.json())
+        .then(data => {
+          const weatherDiv = document.getElementById('weather');
+          if (data.cod === 200) {
+            const weather = data.weather[0];
+            const main = data.main;
+            weatherDiv.innerHTML = `
+              <p><strong>City:</strong> ${data.name}</p>
+              <p><strong>Condition:</strong> ${weather.description}</p>
+              <p><strong>Temperature:</strong> ${main.temp}°C</p>
+              <p><strong>Humidity:</strong> ${main.humidity}%</p>
+              <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+            `;
+          } else {
+            weatherDiv.innerHTML = `<p>Error: ${data.message}</p>`;
+          }
+        });
+    })
+    .catch(error => console.error('Error updating weather data:', error));
+}
+
+// Function to update news data
+function updateNews() {
+  const query = document.getElementById('newsQuery').value;
+  if (!query) {
+    alert('Please enter a search term.');
+    return;
+  }
+
+  // Call Python backend to fetch news data
+  fetch(`/update_news?query=${query}`)
+    .then(() => {
+      // Reload news data from JSON file
+      fetch('news.json')
+        .then(response => response.json())
+        .then(data => {
+          const newsDiv = document.getElementById('news');
+          if (data.status === 'ok') {
+            const articles = data.articles.slice(0, 5); // Show top 5 articles
+            newsDiv.innerHTML = articles.map(article => `
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">${article.title}</h5>
+                  <p class="card-text">${article.description}</p>
+                  <a href="${article.url}" target="_blank" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            newsDiv.innerHTML = `<p>Error: ${data.message}</p>`;
+          }
+        });
+    })
+    .catch(error => console.error('Error updating news data:', error));
+}
+     </script>
+  </body>
+</html>
+

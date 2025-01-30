@@ -1,0 +1,97 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #2c3e50 !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #2c3e50 !important;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.weather-card, .news-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover, .news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card h2, .news-card h2 {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.weather-card p, .news-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.news-card .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.news-card .card-title {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.news-card .card-text {
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  color: #555;
+}

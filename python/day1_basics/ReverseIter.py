@@ -1,7 +1,7 @@
 from operator import index
 
 
-class RevIter:
+class ReverseIter:
     def __init__(self,seq):
         self.seq=seq
         self.index=len(seq)

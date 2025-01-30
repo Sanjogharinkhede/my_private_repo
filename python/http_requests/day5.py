@@ -58,4 +58,19 @@ def header_example():
     
     print(response.text)
 
-
+def pagination_example():
+    url = "https://jsonplaceholder.typicode.com/posts"
+    params = {"_limit": 5, "_page": 1} 
+    while True:
+        response = requests.get(url, params=params)
+        if response.status_code != 200:
+            break
+        data = response.json()
+        if not data: 
+            break
+        for post in data:
+            print(f"Title: {post['title']}")
+        print("page" ,params["_page"] )
+        if params["_page"] == 5 :
+            break
+        params["_page"] += 1 
