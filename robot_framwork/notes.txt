@@ -1,0 +1,216 @@
+How to Run a Basic Program in Robot Framework (Step-by-Step Guide)
+ 
+Robot Framework allows you to write automated test cases 
+in a simple, human-readable format. 
+Let’s go step by step on how to install, write, and run a basic test.
+ 
+Step 1: Install Robot Framework
+ 
+To use Robot Framework, you need to install it first.
+ 
+1️⃣ Install Robot Framework
+ 
+Open a terminal or command prompt and run:
+ 
+pip install robotframework
+ 
+To verify the installation:
+ 
+robot --version
+ 
+If Robot Framework is installed correctly, it will display a version like:
+ 
+Robot Framework 6.0.2
+ 
+2️⃣ Install an Editor (Optional)
+ 
+You can use VS Code, PyCharm, or a simple text editor like Notepad++ to write Robot Framework scripts.
+ 
+For VS Code, install the “Robot Framework Language Server” extension.
+ 
+Step 2: Create a Basic Robot Framework Program
+ 
+Robot Framework uses .robot files to write test cases.
+ 
+1️⃣ Create a New File
+• Open any text editor or VS Code.
+• Create a new file and save it as basic_test.robot
+ 
+2️⃣ Write a Simple Test
+ 
+Copy and paste the following code into basic_test.robot:
+ 
+*** Settings ***
+Library  BuiltIn  # Load built-in functions
+ 
+* Test Cases *
+Addition Test
+    ${result}  Evaluate  2 + 3
+    Should Be Equal As Numbers  ${result}  5
+ 
+String Test
+    ${text}  Set Variable  Hello, Robot!
+    Should Be Equal  ${text}  Hello, Robot!
+ 
+Explanation of the Code:
+ 
+Component Description
+* Settings * Section where libraries are loaded
+Library  BuiltIn Loads built-in Robot Framework functionsou to write automateSection
+where test cases are written
+Evaluate 2 + 3 Performs addition (2+3) and stores it in ${result}
+Should Be Equal As Numbers ${result} 5 Verifies if result = 5
+Set Variable Hello, Robot! Stores a string in ${text}
+Should Be Equal ${text} Hello, Robot! Verifies if ${text} is “Hello, Robot!”
+ 
+Step 3: Run the Robot Framework Test
+ 
+Now, let’s run the test.
+ 
+1️⃣ Open Terminal or Command Prompt
+ 
+Navigate to the folder where your basic_test.robot file is saved.
+For example, if your file is in C:\RobotTests, run:
+ 
+cd C:\RobotTests
+ 
+On Mac/Linux:
+ 
+cd /home/user/RobotTests
+ 
+2️⃣ Run the Test
+ 
+Run the following command:
+ 
+robot basic_test.robot
+ 
+3️⃣ Check the Output
+ 
+Once the test runs, you will see an output like this:
+ 
+==============================================================================
+Basic Test
+==============================================================================
+Addition Test                                                       | PASS |
+String Test                                                         | PASS |
+------------------------------------------------------------------------------
+Basic Test                                                          | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+ 
+✅ Both tests passed successfully!
+ 
+Step 4: View the Test Report
+ 
+After the test runs, Robot Framework generates 3 files in the same directory:
+• log.html → Detailed log of test execution
+• report.html → Summary of test results
+• output.xml → Machine-readable test results
+ 
+To view the report, open report.html in a browser:
+ 
+start report.html  # Windows
+open report.html   # Mac
+xdg-open report.html  # Linux
+ 
+Step 5: Modify and Re-Run the Test
+ 
+Let’s make a failing test by changing the expected value from 5 to 10:
+ 
+* Test Cases *
+Addition Test
+    ${result}  Evaluate  2 + 3
+    Should Be Equal As Numbers  ${result}  10  # Incorrect expectation
+ 
+Run the test again:
+ 
+robot basic_test.robot
+ 
+This time, you will see:
+ 
+==============================================================================
+Basic Test
+==============================================================================
+Addition Test                                                       | FAIL |
+10 != 5
+------------------------------------------------------------------------------
+Basic Test                                                          | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+
+
+
+
+
+
+
+
+
+
+************************************************************************************************************
+
+
+
+*** Settings ***
+Library    SeleniumLibrary
+*** Variables ***
+${URL}    http://www.google.com
+${BROWSER}    chrome
+*** Test Cases ***
+Open Google and Search
+    Open Browser    ${URL}  
+    Sleep    4s
+    Input Text    id=APjFqb    instagram
+    Press Keys    name=q       ENTER
+    Sleep    4s
+    Capture Page Screenshot
+    Sleep    2s
+    Close Browser
+ 
+Google
+ 
+*** Settings ***
+Library    SeleniumLibrary
+*** Variables ***
+${URL}    http://www.google.com
+${BROWSER}    chrome
+*** Test Cases ***
+Extract Heading Text
+    Open Browser    ${URL}  
+    ${heading_text}=    Get Text    xpath=//*[@id="SIvCob"]
+    Sleep    2s
+    Input Text    name=q    ${heading_text}
+    Press Keys    id=APjFqb    ENTER
+    Sleep    2s
+    Capture Page Screenshot
+    Log    ${heading_text}
+    Close Browser
+ 
+Google
+ 
+is theory and practical concepts clear to all about robot framework.
+ 
+
+
+
+
+
+
+
+
+
+ *****************************************************************************************************************
+ *** Settings ***
+Library           RequestsLibrary
+Library           JSONLibrary
+Library           Collections
+ 
+ 
+*** Test Cases ***
+Test GET Request
+    ${response}    GET  https://jsonplaceholder.typicode.com/posts/1
+    Log    ${response.json()}
+    Should Be Equal As Numbers    ${response.status_code}    200
+   
+ 
+fetch('https://dummyjson.com/products').then(res => res.json()).then(console.log);
