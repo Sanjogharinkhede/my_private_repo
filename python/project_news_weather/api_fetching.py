@@ -1,9 +1,13 @@
-import requests
-import json
+import requests,os,json
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 # OpenWeatherMap API
 def fetch_weather(city="New York"):
-    api_key = "08d73f5eec43c851d1cfed508020cbd0"
+    api_key = os.getenv('weather_api_key')
     # url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
     # url=f"https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid={api_key}"
     url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
