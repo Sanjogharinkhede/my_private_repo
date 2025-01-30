@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.0 on win32)" generated="2025-01-30T11:59:51.395879" rpa="false" schemaversion="5">
+<suite id="s1" name="Google" source="F:\_wipro_711\NMS\Assigns\robot_framwork\google.robot">
+<test id="s1-t1" name="Open Google and Search" line="4">
+<kw name="Switch Browser" owner="SeleniumLibrary">
+<msg time="2025-01-30T11:59:52.389994" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-01-30T11:59:52.393280" level="FAIL">No browser with index or alias 'Chrome' found.</msg>
+<arg>Chrome</arg>
+<doc>Switches between active browsers using ``index_or_alias``.</doc>
+<status status="FAIL" start="2025-01-30T11:59:52.389170" elapsed="0.011520">No browser with index or alias 'Chrome' found.</status>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<arg>https://docs.robotframework.org/docs/getting_started/rpa</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" start="2025-01-30T11:59:52.401610" elapsed="0.000376"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-01-30T11:59:52.402512" elapsed="0.000207"/>
+</kw>
+<status status="FAIL" start="2025-01-30T11:59:52.386760" elapsed="0.016384">No browser with index or alias 'Chrome' found.</status>
+</test>
+<status status="FAIL" start="2025-01-30T11:59:51.444558" elapsed="0.960177"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Google" id="s1" pass="0" fail="1" skip="0">Google</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

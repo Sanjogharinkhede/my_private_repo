@@ -1,0 +1,141 @@
+1. What is the Robot Framework primarily used for?
+A) Web development
+B) Software testing
+C) Mobile development
+D) Game development
+
+B
+==============================================
+
+2. Which of the following is the correct extension for a Robot Framework test file?
+A) .py
+B) .robot
+C) .txt
+D) .test
+
+
+B
+==============================================
+
+3. In Robot Framework, what does the keyword "Log" do?
+A) Logs the test case result to the console
+B) Logs messages to a file
+C) Records test case execution time
+D) Displays the results on the screen
+
+
+B
+==============================================
+
+4. How do you specify the location of a test suite in Robot Framework?
+A) Using the *** Settings *** section
+B) Using the Test Suite tag
+C) By including it in the test case
+D) In the *** Variables *** section
+
+
+B
+==============================================
+
+5. What is the purpose of the *** Settings *** section in a Robot Framework test case file?
+A) To define variables
+B) To define keywords
+C) To import libraries and resources
+D) To execute the test cases
+
+C
+==============================================
+
+6. What does the Run Keyword If keyword do?
+A) Runs a keyword in all cases
+B) Runs a keyword only if a certain condition is true
+C) Runs a keyword regardless of conditions
+D) Skips a keyword
+
+B
+==============================================
+
+7. How do you execute a specific test case from a test suite in Robot Framework?
+A) Run only the test case using the --test option
+B) Use --skip to run a single test
+C) Specify the test case name in the test suite
+D) It’s not possible to run a single test case
+
+C
+==============================================
+
+8. Which command is used to run a Robot Framework test from the command line?
+A) python robot.py
+B) robot
+C) run_tests
+D) execute_tests
+
+
+B
+==============================================
+
+
+9. In Robot Framework, which of the following is used to import external libraries?
+A) *** Imports ***
+B) *** Variables ***
+C) *** Settings ***
+D) *** Libraries ***
+
+
+C
+==============================================
+
+10. What is the correct syntax to define a variable in Robot Framework?
+A) Variable: myVar = 5
+B) *** Variables ***
+C) ${myVar} 5
+D) myVar = 5
+
+
+C
+==============================================
+
+11. What does the *** Test Cases *** section contain?
+A) The settings for the test case
+B) The library imports for the test case
+C) The actual test cases to be executed
+D) Variables used in the test case
+
+C
+==============================================
+
+12. How do you add a comment in Robot Framework?
+A) # This is a comment
+B) // This is a comment
+C) /* This is a comment */
+D) <!-- This is a comment -->
+
+A
+==============================================
+
+13. How do you loop through a list in Robot Framework?
+A) Use the FOR keyword
+B) Use the Repeat keyword
+C) Use the Loop keyword
+D) Use the Each keyword
+
+A
+==============================================
+
+14. What type of value is returned by the Run Keyword And Return Status keyword?
+A) Boolean (True/False)
+B) Integer
+C) String
+D) None
+
+A
+==============================================
+
+15. How do you define a test suite in Robot Framework?
+A) Using the *** Suite *** section
+B) By listing multiple test cases together
+C) Using the Test Suite keyword
+D) Using the *** Test Suites *** section
+
+D
+==============================================
