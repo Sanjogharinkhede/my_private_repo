@@ -3,7 +3,7 @@
 2. avoid overusing assert
 3. write custom messages for clarity
 """
-
+import pytest
 
 # Check equal cases
 def test_equality():

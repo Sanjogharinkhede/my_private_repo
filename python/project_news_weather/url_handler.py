@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import urllib.parse
-import api_fetching as backend  # Import the backend script
+import api_fetching as backend  
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):

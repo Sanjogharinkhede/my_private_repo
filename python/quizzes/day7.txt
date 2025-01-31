@@ -1,0 +1,179 @@
+1. What is pytest?
+a) A unit testing framework for Python
+b) A web testing framework
+c) A testing tool for JavaScript
+d) A code coverage tool
+
+A
+==============================================
+
+2. Which of the following is the correct command to install pytest?
+a) pip install pytest
+b) pip install pytest2
+c) pip install pytest3
+d) pip install pytest-xdist
+
+A
+==============================================
+
+3. How do you mark a test as expected to fail in pytest?
+a) @pytest.skip
+b) @pytest.mark.xfail
+c) @pytest.mark.fail
+d) @pytest.mark.ignore
+
+B
+==============================================
+
+4. Which of the following is the correct way to run pytest from the command line?
+a) pytest
+b) pytest -run
+c) pytest run_tests
+d) pytest start
+
+A
+==============================================
+
+5. What does the assert keyword do in a pytest test?
+a) Executes a function
+b) Asserts that a condition is true
+c) Skips the test
+d) Catches exceptions
+
+B
+==============================================
+
+6. Which function is used to group multiple tests into a single test suite in pytest?
+a) @pytest.group
+b) @pytest.suite
+c) @pytest.mark.parametrize
+d) @pytest.mark.usefixtures
+
+C
+==============================================
+
+7. How do you run a specific test function using pytest?
+a) pytest test_function
+b) pytest -k test_function
+c) pytest --test-function test_function
+d) pytest -t test_function
+
+B
+==============================================
+
+8. What is the output format option in pytest to get a more detailed report?
+a) -v
+b) -d
+c) -o
+d) --detail
+
+A
+==============================================
+
+9. Which of the following is used to parametrize tests in pytest?
+a) @pytest.testcase
+b) @pytest.param
+c) @pytest.mark.parametrize
+d) @pytest.fixture
+
+C
+==============================================
+
+10. What is the purpose of the pytest.fixture decorator?
+a) It marks a test function to be skipped
+b) It allows creating reusable test setups
+c) It marks a test as expected to fail
+d) It adds extra functionality to the test runner
+
+B
+==============================================
+
+11. Which pytest command option is used to run tests in parallel?
+a) pytest -p
+b) pytest --parallel
+c) pytest -n
+d) pytest -parallel
+
+C
+==============================================
+
+12. What does the pytest.mark.skip decorator do?
+a) Skips the execution of the test
+b) Forces the test to fail
+c) Marks the test as expected to fail
+d) Ignores the test entirely
+
+A
+==============================================
+
+13. How can you ignore a specific test when running pytest?
+a) Use @pytest.ignore
+b) Use @pytest.skip
+c) Use @pytest.xfail
+d) Use @pytest.mark.skipif
+
+D
+==============================================
+
+14. Which command can you use to check for code coverage in pytest?
+a) pytest --cov
+b) pytest --coverage
+c) pytest --code-coverage
+d) pytest --check-coverage
+
+A
+==============================================
+
+15. What is the purpose of pytest.mark.parametrize?
+a) To run a test multiple times with different arguments
+b) To ignore certain parameters in a test
+c) To parameterize the test runner itself
+d) To set default values for tests
+
+A
+==============================================
+
+16. What does the pytest --maxfail=1 option do?
+a) Limits the number of tests to be run
+b) Stops running tests after the first failure
+c) Limits the number of tests to be executed concurrently
+d) Runs only one test from the test suite
+
+B
+==============================================
+
+17. What would you use @pytest.mark.parametrize for?
+a) To run the same test with different input values
+b) To skip certain tests in a suite
+c) To setup reusable code
+d) To run tests in parallel
+
+A
+==============================================
+
+18. What command option in pytest will display all the test names without executing them?
+a) pytest --list
+b) pytest -l
+c) pytest --collect-only
+d) pytest --tests
+
+C
+==============================================
+
+19. What does pytest return when all tests pass?
+a) exit code 0
+b) exit code 1
+c) exit code 2
+d) exit code 3
+
+A
+==============================================
+
+20. How would you run pytest with a custom configuration file?
+a) pytest --config <config_file>
+b) pytest --config-file <config_file>
+c) pytest -c <config_file>
+d) pytest --configurator <config_file>
+
+A
+==============================================

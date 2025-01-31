@@ -1,0 +1,498 @@
+from robot.api.deco import keyword
+class MyCustomLibrary:
+    @keyword
+    def my_custom_keyword(self, argument):
+        # Logic for the custom keyword
+        print(f"Custom Keyword with argument: {argument}")
+ 
+*** Settings ***
+Library  MyCustomLibrary.py
+ 
+*** Test Cases ***
+Test Custom Keyword
+    My Custom Keyword  Hello World
+ 
+t sounds like you're interested in learning about Robot Framework, which is a popular tool for test automation that supports both keyword-driven testing and behavior-driven development. Let's break down the topics you're mentioning:
+ 
+1. Built-in Keywords and Libraries
+
+Robot Framework comes with a rich set of built-in keywords 
+
+and libraries that help you perform common tasks without having 
+
+to write a lot of code. These include:
+ 
+Built-in Library: It provides fundamental keywords for things 
+
+like string manipulation, logging, conditional statements, and loops.
+ 
+Examples: Log, Should Be Equal, Run Keyword If, Wait Until Keyword Succeeds.
+
+OperatingSystem Library: Allows interaction with the file system, 
+
+including tasks like creating, removing files, or checking file existence.
+ 
+Examples: Create Directory, Remove File, Get File.
+
+SeleniumLibrary: This library is essential for web testing
+
+and allows interaction with web browsers.
+ 
+Examples: Open Browser, Input Text, Click Button.
+
+String Library: Offers keywords for string manipulation.
+ 
+Examples: Get Length, Replace String, Split String.
+
+Collections Library: Provides keywords to manage lists, dictionaries, and other collections.
+ 
+Examples: Create List, Append To List, Get From Dictionary.
+
+2. Creating Custom Keywords
+
+Custom keywords allow you to extend the functionality of Robot Framework by writing your own. You can create them in Python, Java, or any other language that can be integrated with Robot Framework. Here's how you can create a custom keyword:
+ 
+Python Example:
+
+Create a Python file with a class containing the keyword definitions. 
+
+For example, if you're writing a custom library for custom actions:
+
+python
+
+Copy
+
+from robot.api.deco import keyword
+ 
+class MyCustomLibrary:
+ 
+    @keyword
+
+    def my_custom_keyword(self, argument):
+
+        # Logic for the custom keyword
+
+        print(f"Custom Keyword with argument: {argument}")
+
+Then, you can import and use it in your Robot Framework test cases.
+
+robot
+
+Copy
+
+*** Settings ***
+
+Library  MyCustomLibrary.py
+ 
+*** Test Cases ***
+
+Test Custom Keyword
+
+    My Custom Keyword  Hello World
+
+3. Managing and Importing External Test Libraries
+
+To use external libraries that are not part of Robot Framework's standard distribution, you need to install them and then import them into your test suite.
+ 
+Install a library (example with SeleniumLibrary):
+ 
+bash
+
+Copy
+
+pip install robotframework-seleniumlibrary
+
+Import the library in your test suite:
+ 
+robot
+
+Copy
+
+*** Settings ***
+
+Library  SeleniumLibrary
+ 
+*** Test Cases ***
+
+Open Web Browser
+
+    Open Browser  http://example.com  chrome
+
+    Title Should Be  Example Domain
+
+4. Managing Libraries in Larger Projects
+
+When your test suite grows, managing libraries can become challenging. Here are some best practices:
+ 
+Use Resource Files: You can group common keywords and settings into resource files and import them into multiple test suites.
+
+Create Custom Libraries: For reusable logic, create custom Python or Java libraries.
+
+Organize Test Suites: Structure your test suites into directories, and use a clear naming convention for test cases, keywords, and libraries.
+
+By following these practices, your tests will be more modular and easier to maintain as your project grows.
+Example Domain
+ 
+
+
+Let's break down the Robot Framework test code you provided, line by line, to understand how it works in detail.
+ 
+Full Code:
+
+robot
+
+Copy
+
+*** Settings ***
+
+Library           RequestsLibrary
+ 
+*** Variables ***
+
+${BASE_URL}       https://jsonplaceholder.typicode.com
+ 
+*** Test Cases ***
+
+Get Post By ID
+
+    [Documentation]    This test case sends a GET request to fetch post by ID
+
+    [Tags]    api    get    posts
+
+    ${response}=    GET    ${BASE_URL}/posts/1
+
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${json}=    To Json    ${response.text}
+
+    Should Contain    ${json['id']}    1
+
+    Should Contain    ${json['title']}    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+ 
+*** Keywords ***
+
+To Json
+
+    [Arguments]    ${text}
+
+    ${json}=    Evaluate    json.loads('${text}')    json
+
+    [Return]    ${json}
+
+Line-by-Line Breakdown
+
+1. Settings Section
+
+robot
+
+Copy
+
+*** Settings ***
+
+Library           RequestsLibrary
+
+Library: The RequestsLibrary is imported. This library allows Robot Framework 
+
+to interact with HTTP APIs (sending requests and receiving responses). You use it to perform actions like GET, POST, PUT, DELETE requests.
+
+2. Variables Section
+
+robot
+
+Copy
+
+*** Variables ***
+
+${BASE_URL}       https://jsonplaceholder.typicode.com
+
+Variables: Here, you define variables that can be reused throughout the test cases.
+
+${BASE_URL} is a variable containing the base URL for the API you’re testing (https://jsonplaceholder.typicode.com).
+
+3. Test Cases Section
+
+robot
+
+Copy
+
+*** Test Cases ***
+
+Get Post By ID
+
+    [Documentation]    This test case sends a GET request to fetch post by ID
+
+    [Tags]    api    get    posts
+
+    ${response}=    GET    ${BASE_URL}/posts/1
+
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${json}=    To Json    ${response.text}
+
+    Should Contain    ${json['id']}    1
+
+    Should Contain    ${json['title']}    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+
+This section defines the actual test case Get Post By ID. Let's go through it step by step.
+ 
+a. [Documentation]
+
+robot
+
+Copy
+
+[Documentation]    This test case sends a GET request to fetch post by ID
+
+[Documentation]: This is an optional line where you explain what the test case is doing. Here, it indicates that this test sends a GET request to fetch a post by ID.
+
+b. [Tags]
+
+robot
+
+Copy
+
+[Tags]    api    get    posts
+
+[Tags]: Tags are used to categorize test cases. In this case, api, get, and posts are tags. They help you filter and organize your test cases.
+
+c. Sending the GET Request
+
+robot
+
+Copy
+
+${response}=    GET    ${BASE_URL}/posts/1
+
+This line uses the GET keyword provided by RequestsLibrary to send a GET request to the URL ${BASE_URL}/posts/1. This means you’re making a request to the endpoint https://jsonplaceholder.typicode.com/posts/1 to fetch the post with ID 1.
+
+The result of the GET request (which contains the server’s response) is stored in the variable ${response}.
+
+d. Validating the Status Code
+
+robot
+
+Copy
+
+Should Be Equal As Numbers    ${response.status_code}    200
+
+Should Be Equal As Numbers: This is an assertion that checks whether two values are equal numerically.
+
+${response.status_code} gives the HTTP status code returned by the server (e.g., 200 for success).
+
+The test checks if the status code is equal to 200, meaning the request was successful.
+
+e. Converting the Response to JSON
+
+robot
+
+Copy
+
+${json}=    To Json    ${response.text}
+
+To Json: This is a custom keyword (defined later in the Keywords section) that converts the response text into a Python dictionary (JSON).
+
+${response.text} is the body of the response, which is in JSON format (as a string).
+
+This string is converted into a Python dictionary, which is easier to work with, and stored in the ${json} variable.
+
+f. Validating the Content of the JSON Response
+
+robot
+
+Copy
+
+Should Contain    ${json['id']}    1
+
+Should Contain    ${json['title']}    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+
+Should Contain: This assertion checks if a given string contains a certain value.
+
+${json['id']} accesses the id value in the JSON response.
+
+It checks if the id is 1 (since we requested the post with ID 1).
+
+${json['title']} accesses the title field in the JSON response and checks if the title matches the expected value: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit".
+
+4. Keywords Section
+
+The Keywords section defines reusable keywords that can be used in the test cases. In this case, there’s one custom keyword, To Json, which is used to convert the response text into JSON.
+ 
+robot
+
+Copy
+
+*** Keywords ***
+
+To Json
+
+    [Arguments]    ${text}
+
+    ${json}=    Evaluate    json.loads('${text}')    json
+
+    [Return]    ${json}
+
+a. To Json Keyword:
+
+[Arguments]: This line defines an argument for the keyword. The argument is ${text}, which is the raw response body (as a string).
+ 
+Evaluate: This evaluates Python expressions.
+ 
+json.loads('${text}') is a Python function (json.loads) that converts a JSON-formatted string (${text}) into a Python dictionary. This is a common way to handle JSON data in Python.
+
+[Return]: The keyword returns the JSON object (as a Python dictionary) to the calling test case. This allows the test case to use the JSON data for further validation.
+ 
+Final Summary:
+
+GET Request: The test sends a GET request to fetch a post by ID (/posts/1).
+
+Status Code Check: It checks whether the HTTP status code is 200 (successful request).
+
+JSON Response: The response text is converted into a Python dictionary (JSON) for easier manipulation.
+
+Validation: The test checks if the id and title fields in the response match expected values.
+
+This structure allows you to clearly define test cases with robust validation and reusable components. Let me know if you need more examples or clarifications!
+JSONPlaceholder - Free Fake REST API
+ 
+
+ ***************************************************************************************************************************************************************************
+
+
+
+ Assertions in Robot Framework are used to verify that the system
+under test behaves as expected. They are essential for validating outcomes 
+in your test cases and ensuring that the expected results match the actual behavior.
+  In Robot Framework, assertions are typically done using keywords that compare values 
+  or check conditions.
+ 
+Common Assertion Keywords
+Here are some of the most commonly used assertion keywords in Robot Framework:
+ 
+1. Should Be Equal
+Compares two values and asserts they are equal. If they are not, the test will fail.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Be Equal
+    ${result}  Set Variable  5
+    Should Be Equal  ${result}  5
+2. Should Not Be Equal
+Asserts that two values are not equal.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Not Be Equal
+    ${result}  Set Variable  5
+    Should Not Be Equal  ${result}  10
+3. Should Be True
+Verifies that an expression evaluates to True.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Be True
+    ${result}  Set Variable  True
+    Should Be True  ${result}
+4. Should Be False
+Verifies that an expression evaluates to False.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Be False
+    ${result}  Set Variable  False
+    Should Be False  ${result}
+5. Should Be Equal As Numbers
+Similar to Should Be Equal, but compares the values as numbers, ignoring any string formatting.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Be Equal As Numbers
+    Should Be Equal As Numbers  5  5.0  # This will pass since 5 and 5.0 are equal numbers.
+6. Should Contain
+Verifies that a list, string, or other collection contains the expected value.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Contain
+    ${list}  Create List  Apple  Banana  Cherry
+    Should Contain  ${list}  Banana
+7. Should Not Contain
+Verifies that the collection does not contain the given value.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Not Contain
+    ${list}  Create List  Apple  Banana  Cherry
+    Should Not Contain  ${list}  Orange
+8. Should Match
+Checks if a string matches a regular expression pattern.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Match
+    ${text}  Set Variable  robot
+    Should Match  ${text}  r.*t
+9. Should Not Match
+Asserts that a string does not match a regular expression pattern.
+ 
+Example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Should Not Match
+    ${text}  Set Variable  robot
+    Should Not Match  ${text}  a.*t
+Using Assertions in Test Suites
+In Robot Framework, assertions are typically used within the Test Cases section to validate the expected results.
+ 
+robot
+Copy
+*** Settings ***
+Library    OperatingSystem
+ 
+*** Test Cases ***
+Test File Exists
+    ${file}  Set Variable  /path/to/file.txt
+    File Should Exist  ${file}
+ 
+Test Directory Should Contain File
+    ${dir}  Set Variable  /path/to/directory
+    ${file_name}  Set Variable  example.txt
+    Directory Should Contain  ${dir}  ${file_name}
+Advanced Assertions
+You can also make assertions based on more complex conditions using keywords like Run Keyword And Return Status, Run Keyword If, etc., to handle specific situations more flexibly.
+ 
+For example:
+ 
+robot
+Copy
+*** Test Cases ***
+Test Custom Condition
+    ${result}  Run Keyword And Return Status  Some Keyword That May Fail
+    Run Keyword If  ${result}  Log  Success!
+    Run Keyword If  not ${result}  Fail  The keyword failed.
+These assertions help ensure that the functionality of your application is as expected, and Robot Framework will stop executing the test case when an assertion fails.

@@ -1,124 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.13.0 on win32)" generated="2025-01-30T15:04:58.008974" rpa="false" schemaversion="5">
-<suite id="s1" name="Chess Dot Com" source="f:\_wipro_711\NMS\Assigns\robot_framwork\chess_dot_com.robot">
-<test id="s1-t1" name="Play Game" line="49">
+<robot generator="Robot 7.2 (Python 3.13.0 on win32)" generated="2025-01-30T17:29:44.611247" rpa="false" schemaversion="5">
+<suite id="s1" name="Edureka" source="f:\_wipro_711\NMS\Assigns\robot_framwork\edureka.robot">
+<test id="s1-t1" name="Bullet Test" line="12">
 <try>
 <branch type="TRY">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:04:59.551846" level="INFO">Opening browser 'chrome' to base url 'https://www.chess.com/'.</msg>
+<msg time="2025-01-30T17:29:47.157680" level="INFO">Opening browser 'chrome' to base url 'https://www.edureka.co/blog/acceptance-testing/'.</msg>
 <arg>${url}</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-01-30T15:04:59.551296" elapsed="6.838647"/>
+<status status="PASS" start="2025-01-30T17:29:47.148389" elapsed="20.249621"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-30T17:30:07.400697" elapsed="0.319634"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-01-30T17:30:07.953452" level="INFO">${get_text} = Acceptance criteria is defined on the basis of the following:
+● Data Integrity
+● Usability
+● Performance
+● Scalability
+● Documentation
+● Functional Correctness and Completeness
+● Confidentiality and A...</msg>
+<var>${get_text}</var>
+<arg>xpath=${path}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-30T17:30:07.724564" elapsed="0.230282"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-01-30T17:30:07.958810" level="INFO">Acceptance criteria is defined on the basis of the following:
+● Data Integrity
+● Usability
+● Performance
+● Scalability
+● Documentation
+● Functional Correctness and Completeness
+● Confidentiality and Availability
+● Data Conversion
+● Timeliness</msg>
+<arg>${get_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-01-30T17:30:07.956650" elapsed="0.004219"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-01-30T17:30:08.528830" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-01-30T17:30:07.963992" elapsed="0.567218"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-01-30T15:05:09.391569" level="INFO">Slept 3 seconds.</msg>
-<arg>3</arg>
+<msg time="2025-01-30T17:30:18.537577" level="INFO">Slept 10 seconds.</msg>
+<arg>10</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-01-30T15:05:06.390550" elapsed="3.001544"/>
+<status status="PASS" start="2025-01-30T17:30:08.533545" elapsed="10.007242"/>
 </kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:09.392920" level="INFO">Clicking link 'xpath=/html/body/div[1]/div[2]/main/div/div/section[1]/div[2]/div[2]/a'.</msg>
-<arg>xpath=/html/body/div[1]/div[2]/main/div/div/section[1]/div[2]/div[2]/a</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:09.392442" elapsed="3.257515"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:12.651929" level="INFO">Clicking button 'xpath=//*[@id="first-time-modal"]/div/div[2]/div/button[2]'.</msg>
-<arg>xpath=//*[@id="first-time-modal"]/div/div[2]/div/button[2]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:12.650829" elapsed="0.789881"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-01-30T15:05:15.443792" level="INFO">Slept 2 seconds.</msg>
-<arg>2</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-01-30T15:05:13.441753" elapsed="2.003796"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>modal done</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-01-30T15:05:15.446365" elapsed="0.004025"/>
-</kw>
-<kw name="Mouse Over" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:15.453062" level="INFO">Simulating Mouse Over on element 'xpath=//*[@id="board-layout-sidebar"]/div/div[2]/div/div[3]/button'.</msg>
-<arg>xpath=//*[@id="board-layout-sidebar"]/div/div[2]/div/div[3]/button</arg>
-<doc>Simulates hovering the mouse over the element ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:15.451440" elapsed="1.514564"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:16.967683" level="INFO">Clicking button 'xpath=//*[@id="board-layout-sidebar"]/div/div[2]/div/div[3]/button'.</msg>
-<arg>xpath=//*[@id="board-layout-sidebar"]/div/div[2]/div/div[3]/button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:16.966744" elapsed="0.237682"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>play btn click</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-01-30T15:05:17.205475" elapsed="0.001252"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:17.208186" level="INFO">Clicking element 'xpath=//*[@id="board-play-computer"]/div[24]'.</msg>
-<arg>xpath=//*[@id="board-play-computer"]/div[24]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:17.207461" elapsed="0.213269"/>
-</kw>
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:17.474059" level="INFO">Element 'xpath=//*[@id="board-play-computer"]/div[24]' is displayed.</msg>
-<arg>xpath=//*[@id="board-play-computer"]/div[24]</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-01-30T15:05:17.421459" elapsed="0.053187"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-01-30T15:05:19.477742" level="INFO">Slept 2 seconds.</msg>
-<arg>2</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-01-30T15:05:17.475382" elapsed="2.003562"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-01-30T15:05:19.480005" level="INFO">Clicking element 'xpath=//*[@id="board-play-computer"]/div[24]'.</msg>
-<arg>xpath=//*[@id="board-play-computer"]/div[24]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-30T15:05:19.479498" elapsed="0.091767"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-01-30T15:05:28.573217" level="INFO">Slept 9 seconds.</msg>
-<arg>9</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-01-30T15:05:19.571545" elapsed="9.005121"/>
-</kw>
-<status status="PASS" start="2025-01-30T15:04:59.550129" elapsed="29.027194"/>
+<status status="PASS" start="2025-01-30T17:29:47.126446" elapsed="31.419964"/>
 </branch>
 <branch type="EXCEPT">
 <pattern>error_msg</pattern>
 <kw name="Capture Page Screenshot" owner="SeleniumLibrary">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" start="2025-01-30T15:05:28.584906" elapsed="0.001564"/>
+<status status="NOT RUN" start="2025-01-30T17:30:18.550367" elapsed="0.001212"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>Enter Password not found</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-01-30T15:05:28.594858" elapsed="0.005958"/>
+<status status="NOT RUN" start="2025-01-30T17:30:18.570041" elapsed="0.001798"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>error_msg</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-01-30T15:05:28.602270" elapsed="0.001035"/>
+<status status="NOT RUN" start="2025-01-30T17:30:18.574855" elapsed="0.001957"/>
 </kw>
-<status status="NOT RUN" start="2025-01-30T15:05:28.577974" elapsed="0.026075"/>
+<status status="NOT RUN" start="2025-01-30T17:30:18.548433" elapsed="0.029630"/>
 </branch>
 <branch type="FINALLY">
-<kw name="Close All Browsers" owner="SeleniumLibrary">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2025-01-30T15:05:28.611665" elapsed="3.515889"/>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-01-30T17:30:18.582734" elapsed="2.544595"/>
 </kw>
-<status status="PASS" start="2025-01-30T15:05:28.605261" elapsed="3.522554"/>
+<status status="PASS" start="2025-01-30T17:30:18.579483" elapsed="2.549145"/>
 </branch>
-<status status="PASS" start="2025-01-30T15:04:59.550017" elapsed="32.577932"/>
+<status status="PASS" start="2025-01-30T17:29:47.125225" elapsed="34.004285"/>
 </try>
-<status status="PASS" start="2025-01-30T15:04:59.549146" elapsed="32.579483"/>
+<status status="PASS" start="2025-01-30T17:29:47.120108" elapsed="34.011821"/>
 </test>
-<status status="PASS" start="2025-01-30T15:04:58.021440" elapsed="34.109544"/>
+<status status="PASS" start="2025-01-30T17:29:44.647953" elapsed="36.490824"/>
 </suite>
 <statistics>
 <total>
@@ -127,7 +95,7 @@
 <tag>
 </tag>
 <suite>
-<stat name="Chess Dot Com" id="s1" pass="1" fail="0" skip="0">Chess Dot Com</stat>
+<stat name="Edureka" id="s1" pass="1" fail="0" skip="0">Edureka</stat>
 </suite>
 </statistics>
 <errors>
