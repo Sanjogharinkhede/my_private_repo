@@ -175,5 +175,5 @@ b) pytest --config-file <config_file>
 c) pytest -c <config_file>
 d) pytest --configurator <config_file>
 
-A
+C
 ==============================================
