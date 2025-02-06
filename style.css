@@ -43,7 +43,7 @@
 
 .card_box .my_card:hover .card_title h3,
 .card_box .my_card:hover .card_desc p {
-  color: #fff;
+  color: #ffffff;
 }
 
 .card_box .my_card:before {
