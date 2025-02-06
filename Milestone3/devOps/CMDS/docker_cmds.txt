@@ -1,0 +1,37 @@
+   1 try { . "c:\Users\hp\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellInteg... 
+   2 npm install
+   3 docker build -t my-first-app
+   4 docker build -t my-first-app .
+   5 docker build -t my-first-app .
+   6 docker info
+   7 Restart-Service docker
+   8 docker info
+   9 docker build -t my-first-app .
+  10 docker images
+  11 docker tag my-first-app my-first-app:latest
+  12 docker push
+  13 docker push my-first-app:latest
+  14 docker login
+  15 docker push my-first-app:latest
+  16 docker tag my-first-app sanjogharinkhede/my-first-app:latest
+  17 docker push sanjogharinkhede/my-first-app:latest
+  18 docker run -td --name my_app -p 8089:80 my-first-app
+  19 docker images
+  20 docker ps -a
+  21 docker start my_app
+  22 docker ps -a
+  23 docker build -t my-app .
+  24 docker build -t my-app .
+  25 docker build -t my-app2 .
+  26 docker build -t my-app .
+  27 docker build -t my-app .
+  28 docker build -t my-app .
+  29 docker build -t my-app .
+  30 docker images
+  31 docker tag my-app sanjogharinkhede/my-app:latest
+  32 docker push my-first-app:latest
+  33 docker push sanjogharinkhede/my-app:latest
+  34 docker images
+  35 docker run -td --name my_pushed_app -p 82:80 sanjogharinkhede/my-app
+  36 docker ps
+  37 docker stop my_pushed_app

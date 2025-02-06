@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.0 on win32)" generated="2025-02-01T15:00:59.644941" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="F:\_wipro_711\NMS\Robot_Framework\testSuite\login.robot">
+<test id="s1-t1" name="demo_select_multi" line="69">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:01:00.109210" level="INFO">Opening browser 'chrome' to base url 'https://www.softwaretestingmaterial.com/sample-webpage-to-automate/'.</msg>
+<arg>https://www.softwaretestingmaterial.com/sample-webpage-to-automate/</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-01T15:01:00.108847" elapsed="52.146456"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-01T15:01:52.256450" elapsed="0.301806"/>
+</kw>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:01:52.560478" level="INFO">Selecting options from selection list 'multipleselect[]' by label Performance Testing.</msg>
+<arg>multipleselect[]</arg>
+<arg>Performance Testing</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-02-01T15:01:52.559140" elapsed="0.347059"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-01T15:01:54.907770" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-01T15:01:52.906955" elapsed="2.001199"/>
+</kw>
+<kw name="Select From List By Index" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:01:54.909386" level="INFO">Selecting options from selection list 'multipleselect[]' by index 3.</msg>
+<arg>multipleselect[]</arg>
+<arg>3</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<status status="PASS" start="2025-02-01T15:01:54.908953" elapsed="0.533992"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-01T15:01:57.444462" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-01T15:01:55.443573" elapsed="2.001144"/>
+</kw>
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:01:57.446120" level="INFO">Selecting options from selection list 'multipleselect[]' by value msagile.</msg>
+<arg>multipleselect[]</arg>
+<arg>msagile</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-02-01T15:01:57.445461" elapsed="0.187716"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-01T15:01:59.635246" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-01T15:01:57.634374" elapsed="2.001057"/>
+</kw>
+<kw name="Unselect From List By Label" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:01:59.635979" level="INFO">Un-selecting options from selection list 'multipleselect[]' by label Agile Methodology.</msg>
+<arg>multipleselect[]</arg>
+<arg>Agile Methodology</arg>
+<doc>Unselects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-02-01T15:01:59.635760" elapsed="0.086478"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-01T15:02:01.725082" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-01T15:01:59.723373" elapsed="2.002065"/>
+</kw>
+<kw name="Unselect All From List" owner="SeleniumLibrary">
+<msg time="2025-02-01T15:02:01.726749" level="INFO">Unselecting all options from list 'multipleselect[]'.</msg>
+<arg>multipleselect[]</arg>
+<doc>Unselects all options from multi-selection list ``locator``.</doc>
+<status status="PASS" start="2025-02-01T15:02:01.726196" elapsed="0.274588"/>
+</kw>
+<status status="PASS" start="2025-02-01T15:01:00.107391" elapsed="61.894009"/>
+</test>
+<status status="PASS" start="2025-02-01T15:00:59.646426" elapsed="62.358121"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="1" fail="0" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

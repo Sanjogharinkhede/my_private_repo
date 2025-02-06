@@ -1,0 +1,175 @@
+/* Booking Page Styles */
+.booking-container {
+    padding: 4rem 0;
+}
+
+/* Booking Steps */
+.booking-steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 2rem;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    right: -2rem;
+    width: 2rem;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+
+.step.active .step-number {
+    background: var(--primary-color);
+}
+
+.step.completed .step-number {
+    background: #28a745;
+}
+
+/* Seating Layout */
+.screen {
+    background: rgba(255,255,255,0.1);
+    height: 60px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    position: relative;
+    transform: perspective(500px) rotateX(-10deg);
+}
+
+.screen-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255,255,255,0.5);
+}
+
+.seating-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.seat-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.seat:hover:not(.occupied) {
+    background: rgba(255,255,255,0.3);
+}
+
+.seat.selected {
+    background: var(--primary-color);
+}
+
+.seat.occupied {
+    background: rgba(255,255,255,0.05);
+    cursor: not-allowed;
+}
+
+/* Seat Legend */
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Add-ons Section */
+.add-on-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.add-on-quantity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Payment Section */
+.payment-summary {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-details {
+    margin-top: 1rem;
+}
+
+.payment-form {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Navigation Buttons */
+.booking-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Animations */
+.booking-step {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.booking-step.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
