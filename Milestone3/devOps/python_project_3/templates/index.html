@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>CRUD App</h1>
+    <form id="addForm">
+        <input type="text" id="itemName" placeholder="Enter item name" required>
+        <button type="submit">Add Item</button>
+    </form>
+    <ul id="itemList">
+        {% for item in items %}
+        <li data-id="{{ item.id }}">
+            <span>{{ item.name }}</span>
+            <button onclick="editItem({{ item.id }})">Edit</button>
+            <button onclick="deleteItem({{ item.id }})">Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

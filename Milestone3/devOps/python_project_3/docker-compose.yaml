@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+    node.js:
+      image: node-v.1
+      build: 
